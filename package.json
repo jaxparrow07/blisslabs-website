@@ -1,0 +1,26 @@
+{
+  "name": "pug-sass-starter",
+  "version": "1.0.0",
+  "description": "A simple starter for building HTML templates with Pug and Sass.",
+  "main": "gulpfile.js",
+  "scripts": {
+    "start": "gulp",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Sulis Triyono",
+  "license": "ISC",
+  "devDependencies": {
+    "gulp": "^4.0.2",
+    "gulp-autoprefixer": "^8.0.0",
+    "gulp-connect": "^5.7.0",
+    "gulp-plumber": "^1.2.1",
+    "gulp-pug": "^5.0.0",
+    "gulp-rename": "^2.0.0",
+    "gulp-sass": "^5.1.0",
+    "gulp-uglify": "^3.0.2",
+    "sass": "^1.53.0"
+  },
+  "dependencies": {
+    "gulp-less": "^5.0.0"
+  }
+}

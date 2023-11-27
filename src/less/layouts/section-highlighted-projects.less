@@ -1,0 +1,260 @@
+
+.light-header {
+
+    .fill-width;
+
+    text-align: start;
+    font-weight: 400;
+    font-size: 1.8rem;
+
+}
+
+.project-holder {
+
+    .fill-width;
+
+    .horizontal-flex;
+    .center-flex;
+    
+    gap: @gap-default;  
+
+}
+
+@project-card-height: 356px;
+@project-card-width: 200px; // obsolete
+@project-card-blur: 32px;
+@project-card-radius: 24px;
+
+.project-card {
+
+    .horizontal-flex;
+
+    position: relative;
+    height: @project-card-height;
+    min-width: @project-card-width;
+
+    padding: @padding-small;
+    border-radius: @project-card-radius;
+
+    backdrop-filter: blur(@project-card-blur);
+    border: fade(white, 20%) 2px solid;
+
+    overflow: hidden;
+    flex-grow: auto;
+    gap: @gap-small;
+    
+    transition: flex-basis 1s .5s ease-in-out;
+
+
+    cursor: pointer;
+
+
+    .project-logo {
+        max-height: auto; 
+        max-width: auto;
+        transform: scale(130%) translate(0%);
+        background: #00AAFF;
+        mask-image: linear-gradient(black, transparent 90%);
+        transition: max-height @transition-default, max-width @transition-default, mask-image @transition-default, transform @transition-default, margin @transition-default, border-radius @transition-default;
+        
+    }
+
+    .collapsed-title {
+
+        position: absolute;
+        top: 100%;
+        left: 50%;
+        transform: translate(-50%, -120%);
+        font-size: 1.3rem;
+        opacity: 100%;
+        transition: top .8s ease-in-out;
+
+    }
+    .info {
+
+        .fill-height;
+        .fill-width;
+        .vertical-flex;
+
+        justify-content: flex-start;
+
+        gap: @gap-small;
+
+        opacity: 0%;
+        top: -50%;
+    
+    
+        transition: opacity @transition-default, top @transition-default;
+
+        p {
+            &:nth-child(2) {
+                flex-grow: 2;
+            }
+
+            &:nth-child(3) {
+                .text-bold;
+            }
+
+        }
+
+        .button {
+            border-radius: 10px;
+        }
+
+    }
+    
+
+
+}
+
+// || Phone / Mini
+
+@project-card-height-phone: 400px;
+@project-card-image-height-phone: 100px;
+
+@media only screen and (max-width: 600px ) {
+  
+    .project-holder {
+        .vertical-flex;
+    }
+      
+   .project-card {
+
+        .fill-width;
+        .vertical-flex;
+        .center-flex;
+        min-height: @project-card-height-phone;
+
+        transition: width @transition-default;
+
+
+        .project-logo {
+
+            height: @project-card-image-height-phone;
+            max-width: 100%;
+            border-radius: 16px;
+
+            mask-image: unset;
+
+            transform: scale(1);
+            margin: @margin-default / 2;
+            
+            transition: max-height @transition-default, max-width @transition-default, mask-image @transition-default, transform @transition-default, margin @transition-default, border-radius @transition-default;
+        
+        }
+
+        .collapsed-title {
+
+            top: 140%; 
+            transition: top .8s ease-in-out;
+
+        }
+
+        .info {
+
+            .center-cross;
+            opacity: 100%;
+            transition: opacity 1s .8s ease-in-out;
+
+            p {
+                font-size: .8rem;
+            }
+            
+            h2 {
+                font-size: .9rem;
+            }
+        
+
+        }
+
+    } 
+ 
+ }
+
+ // || Tablet
+@project-card-height-tablet: 300px;
+@media only screen and (max-width: 1200px ) {
+  
+    .project-holder {
+        .vertical-flex;
+    }
+      
+   .project-card {
+
+        .fill-width;
+        height: @project-card-height-tablet;
+
+        transition: width @transition-default;
+
+        .project-logo {
+
+            max-height: @project-card-height-tablet / @padding-small;
+
+            border-radius: @project-card-radius - @padding-small;
+            mask-image: unset;
+            
+            transform: scale(1);
+            transition: max-height @transition-default, max-width @transition-default, mask-image @transition-default, transform @transition-default, margin @transition-default, border-radius @transition-default;
+        
+        }
+
+        .collapsed-title {
+            top: 140%; 
+            transition: top .8s ease-in-out;
+        }
+
+        .info {
+            opacity: 100%;
+            transition: opacity 1s .8s ease-in-out;
+
+            p {
+                font-size: .8rem;
+            }
+            
+            h2 {
+                font-size: .9rem;
+            }
+        
+
+        }
+
+    } 
+ 
+ }
+
+// PC/Big screen
+@media only screen and (min-width: 1200px ) {
+    
+   
+    .project-card {
+        flex-basis: 20%;
+    }
+    
+    .active {
+
+        transition: flex-basis @transition-default;
+        flex-basis: 60%;
+    
+        .project-logo {
+
+            border-radius: @project-card-radius - @padding-small;
+            mask-image: unset;
+
+            transform: scale(1);
+            transition: max-height @transition-default, max-width @transition-default, mask-image @transition-default, transform @transition-default, margin @transition-default, border-radius @transition-default;
+        
+        }
+    
+        .collapsed-title {
+            top: 140%; 
+            transition: top .8s ease-in-out;
+        }
+    
+        .info {
+            opacity: 100%;
+            transition: opacity 1s .8s ease-in-out;
+        }
+
+    }
+    
+}

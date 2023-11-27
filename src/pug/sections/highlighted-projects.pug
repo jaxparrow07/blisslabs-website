@@ -1,0 +1,27 @@
+h2.light-header Highlighted Projects
+
+
+.project-holder
+
+    mixin projectCard(imageUrl, title, description, highlights, link)
+        .project-card
+            img.project-logo(src=`${imageUrl}`)
+            h1.collapsed-title #{title}
+            .info
+                h2 #{title}
+                p #{description}
+                p #{highlights}
+                a.button(href=`${link}`, target="_blank")
+                    p Take me there
+
+    +projectCard("https://avatars.githubusercontent.com/u/22484687?s=400&u=0a11f21346afd1f0f0caa2b9f37fd923272fa50b&v=4",
+                "BlissOS", "An Open Source OS, based on Android-x86 for Windows,  ChromeOS & Linux PC hardware that brings all the features and options of Bliss ROM, and more to your PC, and is available in many different configurations.",
+                "1M+ Yearly Downloads     •     Android 11/12/13", "https://blissos.org/")
+
+    +projectCard("https://avatars.githubusercontent.com/u/82235690?s=400&u=107ea2f83479d4fea58160faf3177f9c730de0ad&v=4",
+                "Waydroid", "Waydroid uses a container-based approach to boot a full Android system on a regular GNU/Linux system like Ubuntu.",
+                "750K+ Yearly Downloads    •    Android 11", "https://waydro.id/")
+
+    +projectCard("https://avatars.githubusercontent.com/u/16156670?s=400&u=daebf9708e04bd24c53231900690089c7141e2de&v=4",
+                "BlissROMs","A fully featured replacement OS for your Android device based off AOSP, bringing many customizations, features, and optimizations to your device.",
+                "130K+ Yearly Downloads     •     Android 13","https://blissroms.org/")

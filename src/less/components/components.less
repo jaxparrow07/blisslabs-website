@@ -1,0 +1,32 @@
+.button {
+
+    background-color: white;
+    position: relative;
+
+    height: 40px;
+    border-radius: 6px;
+
+    cursor: pointer;
+
+    &:hover, &:active, &:focus {
+        background-color: darken(white, 10%);
+    }
+
+    &:focus-visible {
+        border: solid 4px @brand-main;
+    }
+    
+    p { 
+        .center-transform;
+        color: black;
+        font-size: 1em;
+    }
+
+    .fill-width;
+}
+
+.text-bold {
+    font-weight: 600;
+}
+
+

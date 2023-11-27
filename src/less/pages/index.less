@@ -1,0 +1,107 @@
+
+@transition-spot: 1.5s ease-in-out forwards;
+
+.main {
+    .center-flex;
+    .fill-viewport;
+}
+
+// || Gradient background
+.background {
+    .fill-viewport;
+    background: @brand-secondary;
+    position: absolute;
+    overflow: hidden;
+
+}
+
+.spot {
+    position: absolute;
+    background: radial-gradient( circle at center, @brand-main, @gradient-extra 20%, transparent 60% );
+    height: calc(800px + 40vw);
+    width: calc(800px + 40vw);
+    transform: translate(-50%, -50%);
+    top: 120%;
+    left: 10%;
+}
+
+.spot-2 {
+    position: absolute;
+    height: calc(1000px + 20vw);
+    width: calc(1000px + 20vw);
+    top: calc(-30% + 10vh);
+    left: 80%;
+    transform: translate(-50%, -50%);
+    opacity: 0%;
+    background: radial-gradient( circle at center, @brand-main, fade(@gradient-extra, 70%) 20%, transparent 60% );
+    animation: spot-2-default-shift @transition-spot;
+}
+
+.spot-2-state {
+    animation: spot-2-color-shift @transition-spot;
+}
+.spot-2-state-remove {
+    background: radial-gradient( circle at center, @gradient-active, transparent 60% );
+    animation: spot-2-color-shift-remove @transition-spot;
+}
+
+
+// || Background gradient keyframes to activate
+
+/* => Default state = Intro */
+@keyframes spot-2-default-shift {
+    0% { opacity: 0%; } 100% {opacity: 100%; }
+
+}
+  
+// => Active state = Color change depending on the parallax image
+@keyframes spot-2-color-shift {
+    0% {
+        opacity: 100%;
+    }
+    50% {
+        opacity: 0%;
+    }
+    100% {
+        opacity: 100%;
+        background: radial-gradient( circle at center, rgba(6, 145, 156, 1), transparent 60% );
+    }
+}
+
+// => Inactive state ( temporary ) = Reverting back to initial color
+@keyframes spot-2-color-shift-remove {
+    0% { opacity: 100%; } 100% { opacity: 0%; }
+}
+
+
+// View that holds everything
+.content {
+
+    .vertical-flex;
+    .fill-viewport;
+    .center-cross;
+    z-index: 2;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    
+}
+
+// Parallax Image
+.parallax-card {
+
+    .fill-width;
+    .vertical-flex;
+    justify-content: flex-start;
+
+    height: auto;
+    gap: @gap-default;
+    padding: @margin-large;
+
+    background-image: url("https://images.pexels.com/photos/931018/pexels-photo-931018.jpeg");
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    border-radius: @border-auto @border-auto 0 0;
+
+}
