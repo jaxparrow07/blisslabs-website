@@ -1,3 +1,4 @@
+// || FLEX
 .vertical-flex {
     display: flex;
     flex-direction: column;
@@ -7,7 +8,6 @@
     display: flex;
     flex-direction: row;
 }
-
 .center-main {
     justify-content: center;
 }
@@ -16,14 +16,10 @@
     align-items: center;
 }
 
-.support-height {
-    height: 100svh;
-}
-
 .center-flex {
     display: flex;
-    align-items: center;
-    justify-content: center;
+    .center-main;
+    .center-cross;
 }
 
 .center-transform {
@@ -31,6 +27,11 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+}
+
+// || Geometry
+.support-height {
+    height: 100svh;
 }
 
 .fill-width {
@@ -44,4 +45,32 @@
 .fill-viewport {
     .support-height;
     width: 100vw;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.text-right {
+    text-align: right;
+}
+
+.text-left {
+    text-align: left;
+}
+
+.gap-1 {
+    gap: @gap-very-small;
+}
+
+.gap-2 {
+    gap: @gap-small;
+}
+
+.gap-3 {
+    gap: @gap-default;
+}
+
+.gap-4 {
+    gap: @gap-large
 }
