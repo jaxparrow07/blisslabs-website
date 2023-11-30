@@ -25,6 +25,7 @@
 @project-card-blur: 32px;
 @project-card-radius: 24px;
 
+@project-card-image-scale: 120%;
 .project-card {
 
     .horizontal-flex;
@@ -45,14 +46,12 @@
     
     transition: flex-basis 1s .5s ease-in-out;
 
-
     cursor: pointer;
-
 
     .project-logo {
         max-height: auto; 
         max-width: auto;
-        transform: scale(130%) translate(0%);
+        transform: scale(@project-card-image-scale);
         background: #00AAFF;
         mask-image: linear-gradient(black, transparent 90%);
         transition: max-height @transition-default, max-width @transition-default, mask-image @transition-default, transform @transition-default, margin @transition-default, border-radius @transition-default;
@@ -112,7 +111,7 @@
 @project-card-height-phone: 400px;
 @project-card-image-height-phone: 100px;
 
-@media only screen and (max-width: 600px ) {
+@media only screen and (max-width: @breakpoint-small ) {
   
     .project-holder {
         .vertical-flex;
@@ -173,7 +172,7 @@
 
  // || Tablet
 @project-card-height-tablet: 300px;
-@media only screen and (max-width: 1200px ) {
+@media only screen and (max-width: @breakpoint-medium ) {
   
     .project-holder {
         .vertical-flex;
@@ -223,7 +222,7 @@
  }
 
 // PC/Big screen
-@media only screen and (min-width: 1200px ) {
+@media only screen and (min-width: @breakpoint-medium ) {
     
    
     .project-card {

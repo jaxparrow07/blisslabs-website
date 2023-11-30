@@ -1,6 +1,11 @@
 
 @transition-spot: 1.5s ease-in-out forwards;
 
+// => Top right
+@spot-1-geometry: calc(800px + 40vw);
+// => Bottom left
+@spot-2-geometry: calc(1000px + 20vw);
+
 .main {
     .center-flex;
     .fill-viewport;
@@ -18,8 +23,8 @@
 .spot {
     position: absolute;
     background: radial-gradient( circle at center, @brand-main, @gradient-extra 20%, transparent 60% );
-    height: calc(800px + 40vw);
-    width: calc(800px + 40vw);
+    height: @spot-1-geometry;
+    width: @spot-1-geometry;
     transform: translate(-50%, -50%);
     top: 120%;
     left: 10%;
@@ -27,8 +32,8 @@
 
 .spot-2 {
     position: absolute;
-    height: calc(1000px + 20vw);
-    width: calc(1000px + 20vw);
+    height: @spot-2-geometry;
+    width: @spot-2-geometry;
     top: calc(-30% + 10vh);
     left: 80%;
     transform: translate(-50%, -50%);
@@ -86,11 +91,12 @@
     
 }
 
-// Parallax Image
+// || Holder - Parallax Image
 .parallax-card {
 
     .fill-width;
     .vertical-flex;
+    .center-cross;
     justify-content: flex-start;
 
     height: auto;

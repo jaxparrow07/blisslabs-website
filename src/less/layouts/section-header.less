@@ -27,6 +27,7 @@
     
 }    
 
+@link-item-height: 30px;
 
 .links {
 
@@ -35,21 +36,28 @@
 
     position: absolute;
 
-    gap: @gap-default;
+    gap: @gap-large * 1.5;
 
     top: 50%;
     left: 50%;
     rotate: 90deg;
-    transform: translateY(60px);
+    transform: translateY(calc(@link-item-height * 1.5));
 
-    height: 30px;
+    height: @link-item-height;
     width: 100vw;
 
-
+    // => Vertical text
     p {   
         cursor: pointer;
-        letter-spacing: .6em;
+
+        height: 50px;
+
+        padding-top: calc(@link-item-height / 2);
+        padding-left: calc(@link-item-height / 3);
+
+        letter-spacing: .5em;
         font-size: calc(1vh + .3em);
+
         transition: transform .2s ease-in-out;
 
         &:hover {
@@ -58,9 +66,12 @@
         }
     }
 
+
+    // => Horizontal Icons
     i {
         display: none;
         padding-bottom: @gap-default;
+
         cursor: pointer;
 
         font-size: 1.5rem;
@@ -75,10 +86,7 @@
 
         &:focus-visible, &:active {
             transform: scale(150%);
-        }
-
-        
-        
+        }     
 
     }
 }
