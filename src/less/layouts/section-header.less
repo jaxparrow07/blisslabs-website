@@ -9,6 +9,7 @@
     z-index: 2;
 
     h1 {
+        font-weight: 500;
         font-size: calc(.5vw + 2em);
     }
 
@@ -20,12 +21,90 @@
     .center-flex;
     .vertical-flex;
 
-    img {
+    svg {
+
         height: auto;
-        width: 200px;
+        width: 220px;
+
+        fill: @brand-main;
+
     }
     
 }    
+
+.easter-egg-animation {
+
+    svg {
+        width: 300px;
+        transition: width @transition-default;
+    }
+
+    h1, h2 {
+        opacity: 0%;
+        display: none;
+        transition: opacity @transition-default, display @transition-default;
+    }
+
+    path {
+
+        @path-delay-step: .6s;
+
+        animation: loop @path-delay-step*7 infinite ease-in-out;
+
+        &:nth-child(7) {
+            animation-delay: @path-delay-step * 1;
+        }
+        &:nth-child(6) {
+            animation-delay: @path-delay-step * 2;
+        }
+        &:nth-child(5) {
+            animation-delay: @path-delay-step * 3;
+        }
+        &:nth-child(1) {
+            animation-delay: @path-delay-step * 4;
+        }
+        &:nth-child(2) {
+            animation-delay: @path-delay-step * 5;
+        }
+        &:nth-child(3) {
+            animation-delay: @path-delay-step * 6;
+        }
+        &:nth-child(4) {
+            animation-delay: @path-delay-step * 7;
+        }
+    }
+
+    @keyframes loop {
+
+        0% {
+
+            fill: @brand-main;
+            stroke: transparent;
+            stroke-width: 0px;
+            filter: blur(0px) brightness(100%);
+            
+        }
+
+        50% {
+
+            fill: transparent;
+            stroke: @brand-main;
+            stroke-width: 8px;
+            filter: blur(2px) brightness(20%);
+
+        }
+
+        100% {
+
+            fill: @brand-main;
+            stroke: transparent;
+            stroke-width: 0px;
+            filter: blur(0px) brightness(100%);
+        
+        }       
+        
+    }
+}
 
 @link-item-height: 30px;
 

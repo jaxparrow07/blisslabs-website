@@ -1,15 +1,33 @@
-.mission-holder
+section 
+    .mission-holder
 
-    section
-        h1.text-center WHAT WE DO
-        p.text-center Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed molestie, quam quis sagittis condimentum, nibh arcu efficitur massa, non semper libero diam eget metus. Mauris lorem dolor, vulputate et scelerisque vitae, malesuada vel felis. Integer convallis egestas nulla, at mollis ipsum luctus vel. Duis porttitor odio id diam pharetra interdum. Nunc vel dapibus eros, vitae dignissim massa. Sed consequat eget elit nec imperdiet. Donec feugiat rhoncus purus laoreet imperdiet.
+        section
+            h1.text-center WHAT WE DO
+            p.text-center Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed molestie, quam quis sagittis condimentum, nibh arcu efficitur massa, non semper libero diam eget metus. Mauris lorem dolor, vulputate et scelerisque vitae, malesuada vel felis. Integer convallis egestas nulla, at mollis ipsum luctus vel. Duis porttitor odio id diam pharetra interdum. Nunc vel dapibus eros, vitae dignissim massa. Sed consequat eget elit nec imperdiet. Donec feugiat rhoncus purus laoreet imperdiet.
 
-    section
+        section
 
-        h1.text-right HOW WE DO IT
-        p.text-right Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed molestie, quam quis sagittis condimentum, nibh arcu efficitur massa, non semper libero diam eget metus. Mauris lorem dolor, vulputate et scelerisque vitae, malesuada vel felis. Integer convallis egestas nulla, at mollis ipsum luctus vel. Duis porttitor odio id diam pharetra interdum. Nunc vel dapibus eros, vitae dignissim massa. Sed consequat eget elit nec imperdiet. Donec feugiat rhoncus purus laoreet imperdiet.
-    
-    .backdrop-logo
-        include ../partials/inline-logo
+            h1.text-right HOW WE DO IT
+            p.text-right Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed molestie, quam quis sagittis condimentum, nibh arcu efficitur massa, non semper libero diam eget metus. Mauris lorem dolor, vulputate et scelerisque vitae, malesuada vel felis. Integer convallis egestas nulla, at mollis ipsum luctus vel. Duis porttitor odio id diam pharetra interdum. Nunc vel dapibus eros, vitae dignissim massa. Sed consequat eget elit nec imperdiet. Donec feugiat rhoncus purus laoreet imperdiet.
+        
+        .backdrop-logo
+            include ../partials/inline-logo
 
-.closing-card
+    .bottom-card
+        p BLISS FAMILY
+        .bottom-card-container
+            mixin extraProjectCard(imageUrl, name, github, website)
+                section
+                    .extra-project-card
+                        img(src=`${imageUrl}`)
+                        p #{name}
+                        i.bi.bi-github(href=`${github}`, target="_blank")
+                        i.bi.bi-globe(href=`${website}`, target="_blank")
+            
+            +extraProjectCard("https://internal.blisslabs.org/storage/6/61ca78df1b27d_SG_Asset_2.png", "SupremeGamers","https://google.com","https://google.com" )
+            +extraProjectCard("https://internal.blisslabs.org/storage/2/61ca77196da33_android-generic.png", "AndroidGeneric","https://google.com","https://google.com" )
+            +extraProjectCard("https://internal.blisslabs.org/storage/5/61ca7893cf9b5_boringdroid.png", "BoringDroid","https://google.com","https://google.com" )
+            +extraProjectCard("https://internal.blisslabs.org/storage/5/61ca7893cf9b5_boringdroid.png", "BoringDroid","https://google.com","https://google.com" )
+            +extraProjectCard("https://internal.blisslabs.org/storage/5/61ca7893cf9b5_boringdroid.png", "BoringDroid","https://google.com","https://google.com" )
+            +extraProjectCard("https://internal.blisslabs.org/storage/5/61ca7893cf9b5_boringdroid.png", "BoringDroid","https://google.com","https://google.com" )
+            +extraProjectCard("https://internal.blisslabs.org/storage/5/61ca7893cf9b5_boringdroid.png", "BoringDroid","https://google.com","https://google.com" )

@@ -2,14 +2,15 @@
 
     .vertical-flex;
     .center-cross;
+    .center-main;
     
     position: relative;
 
     width: 100vw;
     height: auto;
-    min-height: 300px;
+    min-height: 500px;
 
-    gap: @gap-large;
+    gap: @gap-large * 2;
     padding: @padding-default;
 
     padding-top: @padding-default * 2;
@@ -39,7 +40,7 @@
         letter-spacing: .8em;
         margin-right: -.8em;
         font-weight: 400;
-        font-size: calc(1vw + 1em)
+        font-size: calc(1vw + 1em);
     }
 
     section {
@@ -62,6 +63,110 @@
 
         &:nth-child(2) {
             align-self: flex-end;
+        }
+
+    }
+
+}
+
+.bottom-card {
+
+    .vertical-flex;
+    .center-cross;
+    .center-main;
+
+    width: 100vw;
+    height: auto;
+
+    padding: @padding-default;
+    gap: @gap-small;
+    
+    border-radius: 0px 0px @border-auto @border-auto;
+
+    background-color: white;
+
+    p:nth-child(1) {
+        color: black;
+        letter-spacing: .2em;
+        
+    }
+
+    .bottom-card-container {
+
+        .horizontal-flex;
+        .center-cross;
+        
+        align-items: flex-start;
+        flex: 0;
+
+        @media only screen and (min-width: @breakpoint-medium) {
+            gap: @gap-default;
+            width: 80%;
+        }
+        
+        width: 95%;
+        overflow-x: auto;
+
+
+        scroll-snap-type: x mandatory;
+
+        // Helps it snap to place when scrolled
+        section {
+            
+            .horizontal-flex;
+            .center-main;
+
+            scroll-snap-align: start;
+
+            @media only screen and (max-width: @breakpoint-medium) {
+                min-width: 50%;
+            }
+            @media only screen and (max-width: @breakpoint-small) {
+                min-width: 100%;
+            }
+
+        }
+
+        // Project card item
+        .extra-project-card {
+
+            .horizontal-flex;
+            .center-cross;
+
+            gap: @gap-small;
+    
+            @media only screen and (max-width: @breakpoint-medium) {
+                margin: @margin-small;
+            }
+
+            background-color: @brand-main;
+            padding: @padding-small;
+    
+            border-radius: 20px;
+    
+            height: 80px;
+            width: 300px;
+            
+
+            p {
+                flex-grow: 2;
+            }
+
+            img {
+                height: 50px;
+                width: 50px;
+                
+                object-fit: cover;
+
+                border-radius: 50%;
+
+            }
+
+            i {
+                cursor: pointer;
+                font-size: 1.5em;
+            }
+            
         }
 
     }

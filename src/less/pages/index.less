@@ -2,9 +2,10 @@
 @transition-spot: 1.5s ease-in-out forwards;
 
 // => Top right
-@spot-1-geometry: calc(800px + 40vw);
+@spot-2-geometry: calc(1000px + 50vw);
+
 // => Bottom left
-@spot-2-geometry: calc(1000px + 20vw);
+@spot-1-geometry: calc(800px + 50vw);
 
 .main {
     .center-flex;
@@ -89,6 +90,8 @@
     overflow-y: scroll;
     overflow-x: hidden;
     
+    scrollbar-width: 4px;
+    scrollbar-color: @gradient-extra transparent;
 }
 
 // || Holder - Parallax Image
@@ -97,13 +100,16 @@
     .fill-width;
     .vertical-flex;
     .center-cross;
-    justify-content: flex-start;
 
     height: auto;
+    justify-content: flex-start;
+
+    flex-shrink: 0;
+    
     gap: @gap-default;
     padding: @margin-large;
 
-    background-image: url("https://images.pexels.com/photos/931018/pexels-photo-931018.jpeg");
+    background-image: url("https://images.pexels.com/photos/2880755/pexels-photo-2880755.jpeg");
     background-attachment: fixed;
     background-repeat: no-repeat;
     background-size: cover;

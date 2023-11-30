@@ -1,6 +1,8 @@
 .button {
 
-    background-color: white;
+    @button-color: white;
+
+    background-color: @button-color;
     position: relative;
 
     height: 40px;
@@ -8,8 +10,12 @@
 
     cursor: pointer;
 
-    &:hover, &:active, &:focus {
-        background-color: darken(white, 10%);
+    &:hover, &:focus {
+        background-color: darken(@button-color, 10%);
+    }
+
+    &:active {
+        background-color: darken(@button-color, 20%);
     }
 
     &:focus-visible {
@@ -40,19 +46,23 @@
 
 }
 
-.closing-card {
-
-    border-radius: 0px 0px @border-auto @border-auto;
-
-    height: 50px;
-    width: 100vw;
-
-    background-color: white;
-    margin-top: calc(-@padding-default);
-
-}
-
 .space-medium {
     height: 24px;
     widtH: 24px;
+}
+
+.gap-1 {
+    gap: @gap-very-small;
+}
+
+.gap-2 {
+    gap: @gap-small;
+}
+
+.gap-3 {
+    gap: @gap-default;
+}
+
+.gap-4 {
+    gap: @gap-large
 }
