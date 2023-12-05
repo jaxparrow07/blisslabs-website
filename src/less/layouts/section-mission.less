@@ -36,13 +36,6 @@
 
     }
 
-    h1 {
-        letter-spacing: .8em;
-        margin-right: -.8em;
-        font-weight: 400;
-        font-size: calc(1vw + 1em);
-    }
-
     section {
 
         .vertical-flex;
@@ -80,6 +73,7 @@
     width: 100vw;
     height: auto;
 
+    margin-bottom: @margin-large;
     padding: @padding-default;
     gap: @gap-small;
     
@@ -108,7 +102,7 @@
 
 
         @media only screen and (max-width: @breakpoint-medium) {
-            width: 95%;
+            width: 100%;
         }
         @media only screen and (min-width: @breakpoint-medium) {
             gap: @gap-default;
@@ -134,13 +128,25 @@
 
                 i {
                     margin: auto;
-
                     font-size: 1.5em;
                     font-weight: 600;
                     color: darken(white, 5%);
-
-
                 }
+
+                .breakpoint(medium;
+
+                    {
+                        height: 38px;
+                        width: 38px;
+                        border-radius: 50%;
+
+                        i {
+                            font-size: 1em;
+                        }
+
+                    }
+                    
+                )
                 
                 
             }
@@ -183,15 +189,26 @@
                 
                 .horizontal-flex;
                 .center-main;
+
+                min-width: 32%;
     
                 scroll-snap-align: start;
     
-                @media only screen and (max-width: @breakpoint-medium) {
-                    min-width: 50%;
-                }
-                @media only screen and (max-width: @breakpoint-small) {
-                    min-width: 100%;
-                }
+                .breakpoint(medium;
+
+                    {
+                        min-width: 50%;
+                    }
+
+                );
+
+                .breakpoint(small;
+
+                    {
+                        min-width: 100%;
+                    }
+
+                );
     
             }
     

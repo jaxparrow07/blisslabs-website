@@ -1,1 +1,31 @@
-h2.light-header BRAINS BEHIND THE BEAUTY
+mixin memberCard(imageUrl, name, position)
+    .member-card
+        img(src=`${imageUrl}`)
+        .vertical-flex.center-main.center-cross.fill-width
+            h3 #{name}
+            p #{position}
+
+//- This view is nested because it'll be later used to calculate the horizontal scroll start offset
+.scroll-offset-view
+    #member-scroll-placeholder
+        .sticky-holder
+            h2.spaced-header-2.text-center BRAINS BEHIND THE BEAUTY
+            .member-card-grid
+                +memberCard("https://internal.blisslabs.org/storage/8/61d01b44afe73_jackeagle.jpeg", "Jack Eagle", "Founder / CEO")
+                +memberCard("https://internal.blisslabs.org/storage/9/61d01b9052862_electrikjesus.png", "Jon West", "CTO / OS")
+                +memberCard("https://internal.blisslabs.org/storage/13/61d01c696c918_aryan.jpeg", "Aryan Arora", "Board Member")
+                +memberCard("https://internal.blisslabs.org/storage/16/61d01cefdd612_eric.jpeg", "Eric Park", "Backend Developer")
+                +memberCard("https://internal.blisslabs.org/storage/19/61d01d85e2cdc_adnan.jpg", "Adnan Faysal", "Graphic Designer")
+
+                +memberCard("https://internal.blisslabs.org/storage/23/621cd2f4a5ea3_ayan.jpg", "Ayan Mukherjee", "Lead Developer")
+                +memberCard("https://internal.blisslabs.org/storage/24/62542b7b16cfb_huh.jpg", "HMTheBoy154", "BlissOS&AG maintainer")
+                +memberCard("https://internal.blisslabs.org/storage/29/6395e8b4d56d2_IMG_20220514_121537_110.jpg", "Jis G Jacob", "Public Relations")
+                +memberCard("https://internal.blisslabs.org/storage/30/6429bbb2ec097_photo_2023-04-02_22-58-50.jpg", "Xelte Xynos", "Graphic Designer")
+                +memberCard("https://internal.blisslabs.org/storage/31/6429bfc63bf72_16012350.jpg", "Shripal Jain", "App Developer")
+                +memberCard("https://internal.blisslabs.org/storage/31/6429bfc63bf72_16012350.jpg", "Shripal Jain", "App Developer")
+                +memberCard("https://internal.blisslabs.org/storage/31/6429bfc63bf72_16012350.jpg", "Shripal Jain", "App Developer")
+   
+        .member-filler-div
+    .separator-medium
+    
+    .join-team

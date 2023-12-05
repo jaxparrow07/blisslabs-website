@@ -1,18 +1,21 @@
 extends ../layouts/default-layout.pug
 block content
-  .main
-    .background
-      .spot
-      .spot-2
+  .background
+    .spot
+    .spot-2
 
-    .content
-      include ../sections/header-holder
-      
-      .parallax-card
+  .content
+    include ../sections/header-holder
+            
+    .parallax-card
 
-        include ../sections/highlighted-projects
+      include ../sections/highlighted-projects
 
-        .separator-medium
-        .space-medium
+      .separator-medium
+      .space-medium
 
-        include ../sections/mission
+      include ../sections/mission
+      include ../sections/team
+    
+    div.horizontal-flex.center-cross(style="min-height: 20vh;")#footer
+      h1 BlissLabs

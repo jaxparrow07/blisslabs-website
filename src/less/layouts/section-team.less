@@ -1,0 +1,101 @@
+.scroll-offset-view {
+    .vertical-flex;
+    .center-cross;
+    .fill-width;
+
+    gap: @gap-default;
+    
+}
+
+.sticky-holder {
+    top: 5%;
+    position: sticky;
+
+    h2 {
+        padding: @padding-default;
+        padding-bottom: calc(-1 * @padding-default);
+    }
+
+}
+
+.member-card-grid {
+
+    .horizontal-flex;
+    .center-cross;
+
+    width: 100vw;
+
+    justify-content: flex-start;
+    
+    margin-block: @margin-default * 2;
+    padding-inline-start: 40vw;
+
+    overflow: hidden;
+
+    gap: @gap-very-small;
+
+        
+    .member-card {
+
+        position: relative;
+
+        flex-shrink: 0;
+
+        height: 300px;
+        width: 200px;
+
+        overflow: hidden;
+
+        background-color: black;
+
+        .vertical-flex {
+            position: absolute;
+            top: 100%;
+            transform: translate(0%, -120%);
+        }
+
+        img {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+
+            transform: translate(-50%, -50%);
+
+            height: 100%;
+
+            mask-image: linear-gradient(black 60%, transparent);
+
+        }
+
+        &:nth-child(1) {
+            margin-inline-start: 20vw;
+            border-radius: calc(@border-auto / 2) 0 0 calc(@border-auto / 2);
+        }
+
+        &:nth-last-child(1) {
+            margin-inline-end: 20vw;
+            border-radius: 0 calc(@border-auto / 2) calc(@border-auto / 2) 0;
+        }
+    
+    }
+
+
+}
+
+.member-filler-div {
+    width: 100vw;
+}
+
+.join-team {
+    .fill-width;
+    .vertical-flex;
+
+    height: 30vh;
+    
+    gap: @gap-default;
+
+    border-radius: @border-auto;
+
+    background-color: fade(@brand-secondary, 75%);
+    backdrop-filter: blur(32px);
+}

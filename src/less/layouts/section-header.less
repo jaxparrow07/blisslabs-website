@@ -176,7 +176,7 @@
         rotate: 0deg;
         left: 50%;
         top: 100%;
-        transform: translate(-50%, -120%);
+        transform: translate(-50%, calc(-100% - 30px));
         padding-bottom: @gap-default;
         
         p {
@@ -187,6 +187,22 @@
             display: block;
         }
     }
+
+    .separator-medium[id=for-header] {
+
+        display: block !important;
+        position: absolute;
+    
+        height: 4px;
+    
+        left: 50%;
+        top: 100%;
+        transform: translate(-50%, calc(-100% - 8px));
+    }
+    
     
 }
-            
+        
+.separator-medium[id=for-header] {
+    display: none;
+}

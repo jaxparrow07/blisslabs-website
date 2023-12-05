@@ -36,8 +36,8 @@
 
     padding: @padding-small;
     border-radius: @project-card-radius;
-
-    backdrop-filter: blur(@project-card-blur);
+    
+    backdrop-filter: if((@enable-effects-mobile), blur(@project-card-blur), none);
     border: fade(white, 20%) 2px solid;
 
     overflow: hidden;
@@ -52,7 +52,7 @@
         max-height: auto; 
         max-width: auto;
         transform: scale(@project-card-image-scale);
-        background: #00AAFF;
+        background: @brand-legacy;
         mask-image: linear-gradient(black, transparent 90%);
         transition: max-height @transition-default, max-width @transition-default, mask-image @transition-default, transform @transition-default, margin @transition-default, border-radius @transition-default;
         

@@ -63,3 +63,14 @@
     text-align: left;
 }
 
+
+// BREAKPOINTS
+.breakpoint(small,@rules) {
+    @media only screen and (max-width: @breakpoint-small) {@rules();}
+}
+.breakpoint(medium,@rules) {
+    @media only screen and  (max-width: @breakpoint-medium) {@rules();}
+}
+.breakpoint(large,@rules) {
+    @media only screen and (min-width: @breakpoint-medium) {@rules();}
+}
