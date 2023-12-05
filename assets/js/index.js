@@ -1,10 +1,9 @@
 //  || VARIABLES - EASY CUSTOMIZATION
 const EXTRA_PROJECT_SLIDER_INTERVAL = 4000; // ms
+const GRADIENT_ACTIVATE_POSITION = 300; // px
 
 const EASTER_EGG_CLICK_COUNT = 5;
 
-
-// || UI INTERACTION
 
 // => Easter Egg
 var iconClickCount = 1;
@@ -43,14 +42,61 @@ function requestFullScreen(element) {
 
 }
 
+
+// || HORIZONTAL SCROLL
+
+var memberCardScroll = document.querySelector(".member-card-grid");
+var memberCardVerticalVoid = document.querySelector(".member-filler-div");
+
+var memberCardWidth = memberCardScroll.scrollWidth - memberCardScroll.clientWidth; // Getting the acutal width of it
+memberCardVerticalVoid.style.height = `${memberCardWidth}px`; // Setting the height to the width of the horizontal scroll view
+
 // 
-// => GRADIENT BACKGROUND
-const contentScroll = document.querySelector(".content");
-const spotGradient = document.querySelector(".spot-2");
+// => SCROLL CHANGES
+var contentScroll = document.querySelector(".content");
+var spotGradient = document.querySelector(".spot-2");
+var scrollOffsetView = document.querySelector(".scroll-offset-view");
+var footerView = document.querySelector("#footer");
+
+var lastScrollPercentage;
+var lastScrollPosition;
+var contentScrollMax = (contentScroll.scrollHeight - contentScroll.clientHeight); // Maximum scroll of the top parent view ( CONTENT )
+
+const horizontalScrollFactor = 20;
+const verticalScrollOffset = document.querySelector(".sticky-holder").clientHeight; // Height of the sticky view
+
+// Resizing messes up the horizontal scroll calculations
+window.addEventListener("resize", () => {
+
+  // ScrollMax needs to be updated on resize as there will be breakponits changing properties of elements
+  var contentScrollMax = (contentScroll.scrollHeight - contentScroll.clientHeight);
+
+  if (contentScroll.scrollTop > ( contentScrollMax - ( scrollOffsetView.clientHeight)) ) {
+
+    contentScroll.scrollTo({top: ( contentScrollMax - ( scrollOffsetView.clientHeight - verticalScrollOffset)), left: 0, behavior: "smooth"});
+    memberCardScroll.scrollTo({top: 0, left: 0, behavior: "smooth"});
+
+  }
+
+});
 
 contentScroll.addEventListener("scroll", (event) => {
-      
-  if (contentScroll.scrollTop > (contentScroll.clientHeight / 3)) 
+
+  var scrollPercentage = (contentScroll.scrollTop / contentScrollMax ) * 100;
+  var scrollPosition = contentScroll.scrollTop;
+
+  document.querySelector(":root").style.setProperty("--scroll-percentage", `${scrollPercentage / 2 }%` );
+
+  // Horizontal Scroll Translation
+  // Range Conditions: If scroll position is NOT ABOVE FOOTER and is NOT BELOW MEMBER LIST horizontal view, scroll
+  if ( ((contentScrollMax - footerView.clientHeight ) > contentScroll.scrollTop) && (contentScroll.scrollTop > ( contentScrollMax - ( scrollOffsetView.clientHeight - verticalScrollOffset - footerView.clientHeight)) ) ) {
+
+    const scrollByCalc = (scrollPosition - lastScrollPosition) * horizontalScrollFactor;
+    memberCardScroll.scrollBy({top:0, left: scrollByCalc, behavior: "smooth"});
+
+  }
+
+  if (scrollPosition > GRADIENT_ACTIVATE_POSITION) 
   { 
     spotGradient.classList.add("spot-2-state");
     
@@ -67,8 +113,11 @@ contentScroll.addEventListener("scroll", (event) => {
 
     }
     
-    
   }
+
+  lastScrollPercentage = scrollPercentage;
+  lastScrollPosition = scrollPosition;
+
 });
 
 
