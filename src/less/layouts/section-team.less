@@ -10,10 +10,11 @@
 .sticky-holder {
     top: 5%;
     position: sticky;
+    width: 100vw;
 
     h2 {
-        padding: @padding-default;
-        padding-bottom: calc(-1 * @padding-default);
+        width: 100%;
+        justify-self: center
     }
 
 }
@@ -23,17 +24,14 @@
     .horizontal-flex;
     .center-cross;
 
-    width: 100vw;
+    width: 100vw;;
 
     justify-content: flex-start;
     
     margin-block: @margin-default * 2;
-    padding-inline-start: 40vw;
-
-    overflow: hidden;
+    padding-inline: 20vw;
 
     gap: @gap-very-small;
-
         
     .member-card {
 
@@ -73,7 +71,6 @@
         }
 
         &:nth-last-child(1) {
-            margin-inline-end: 20vw;
             border-radius: 0 calc(@border-auto / 2) calc(@border-auto / 2) 0;
         }
     
@@ -90,7 +87,7 @@
     .fill-width;
     .vertical-flex;
 
-    height: 30vh;
+    height: 60vh;
     
     gap: @gap-default;
 

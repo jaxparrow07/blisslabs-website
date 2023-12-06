@@ -48,6 +48,8 @@ function requestFullScreen(element) {
 var memberCardScroll = document.querySelector(".member-card-grid");
 var memberCardVerticalVoid = document.querySelector(".member-filler-div");
 
+var memberCardStickyHolder = document.querySelector(".sticky-holder");
+
 var memberCardWidth = memberCardScroll.scrollWidth - memberCardScroll.clientWidth; // Getting the acutal width of it
 memberCardVerticalVoid.style.height = `${memberCardWidth}px`; // Setting the height to the width of the horizontal scroll view
 
@@ -58,23 +60,36 @@ var spotGradient = document.querySelector(".spot-2");
 var scrollOffsetView = document.querySelector(".scroll-offset-view");
 var footerView = document.querySelector("#footer");
 
-var lastScrollPercentage;
-var lastScrollPosition;
+var lastScrollPercentage,
+lastScrollPosition,
+
+relativeScrollStart,
+relativeScollEnd,
+
+scrollPercentage,
+scrollPosition;
+
 var contentScrollMax = (contentScroll.scrollHeight - contentScroll.clientHeight); // Maximum scroll of the top parent view ( CONTENT )
 
-const horizontalScrollFactor = 20;
-const verticalScrollOffset = document.querySelector(".sticky-holder").clientHeight; // Height of the sticky view
+var verticalScrollOffset = memberCardStickyHolder.clientHeight; // Height of the sticky view
 
 // Resizing messes up the horizontal scroll calculations
 window.addEventListener("resize", () => {
 
+  memberCardWidth = memberCardScroll.scrollWidth - memberCardScroll.clientWidth; // Getting the acutal width of it
+  memberCardVerticalVoid.style.height = `${memberCardWidth }px`; // Setting the height to the width of the horizontal scroll view
+
+  verticalScrollOffset = memberCardStickyHolder.clientHeight;
+
   // ScrollMax needs to be updated on resize as there will be breakponits changing properties of elements
-  var contentScrollMax = (contentScroll.scrollHeight - contentScroll.clientHeight);
+  contentScrollMax = (contentScroll.scrollHeight - contentScroll.clientHeight);
 
-  if (contentScroll.scrollTop > ( contentScrollMax - ( scrollOffsetView.clientHeight)) ) {
+  relativeScrollStart = ( contentScrollMax - (scrollOffsetView.clientHeight));
+  relativeScollEnd = (contentScrollMax - (verticalScrollOffset));
 
-    contentScroll.scrollTo({top: ( contentScrollMax - ( scrollOffsetView.clientHeight - verticalScrollOffset)), left: 0, behavior: "smooth"});
-    memberCardScroll.scrollTo({top: 0, left: 0, behavior: "smooth"});
+  if (( relativeScollEnd > contentScroll.scrollTop) && (contentScroll.scrollTop >  relativeScrollStart)) {
+
+    contentScroll.scrollTo({top: relativeScrollStart, left: 0, behavior: "smooth"});
 
   }
 
@@ -82,17 +97,26 @@ window.addEventListener("resize", () => {
 
 contentScroll.addEventListener("scroll", (event) => {
 
-  var scrollPercentage = (contentScroll.scrollTop / contentScrollMax ) * 100;
-  var scrollPosition = contentScroll.scrollTop;
+  scrollPercentage = (contentScroll.scrollTop / contentScrollMax ) * 100;
+  scrollPosition = contentScroll.scrollTop;
 
-  document.querySelector(":root").style.setProperty("--scroll-percentage", `${scrollPercentage / 2 }%` );
+  relativeScrollStart = ( contentScrollMax - (scrollOffsetView.clientHeight));
+  relativeScollEnd = (contentScrollMax - (verticalScrollOffset));
+
+  // document.querySelector(":root").style.setProperty("--scroll-percentage", `${scrollPercentage / 2 }%` );
 
   // Horizontal Scroll Translation
   // Range Conditions: If scroll position is NOT ABOVE FOOTER and is NOT BELOW MEMBER LIST horizontal view, scroll
-  if ( ((contentScrollMax - footerView.clientHeight ) > contentScroll.scrollTop) && (contentScroll.scrollTop > ( contentScrollMax - ( scrollOffsetView.clientHeight - verticalScrollOffset - footerView.clientHeight)) ) ) {
+  if ( ( relativeScollEnd > contentScroll.scrollTop) && (contentScroll.scrollTop >  relativeScrollStart) ) {
 
-    const scrollByCalc = (scrollPosition - lastScrollPosition) * horizontalScrollFactor;
-    memberCardScroll.scrollBy({top:0, left: scrollByCalc, behavior: "smooth"});
+    // Relative percentage of the horizontally scrollable part
+    const relativeScrollPercentage = (((scrollPosition - relativeScrollStart) / (relativeScollEnd - relativeScrollStart) ) * 100);
+    const scrollByCalc = ( (memberCardWidth + window.innerWidth) * relativeScrollPercentage ) / 100;
+
+    console.log(relativeScrollPercentage);
+
+    memberCardScroll.style.setProperty("margin-left", `${(scrollByCalc * -1) + 200}px` );
+
 
   }
 
@@ -204,4 +228,4 @@ function autoScrollExtraProjects() {
 window.addEventListener("load", () => {
   selectProjectCard(0);
   autoScrollExtraProjects();
-})
+});
