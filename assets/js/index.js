@@ -51,7 +51,7 @@ var memberCardVerticalVoid = document.querySelector(".member-filler-div");
 var memberCardStickyHolder = document.querySelector(".sticky-holder");
 
 var memberCardWidth = memberCardScroll.scrollWidth - memberCardScroll.clientWidth; // Getting the acutal width of it
-memberCardVerticalVoid.style.height = `${memberCardWidth}px`; // Setting the height to the width of the horizontal scroll view
+memberCardVerticalVoid.style.height = `${memberCardWidth * 2}px`; // Setting the height to the width of the horizontal scroll view
 
 // 
 // => SCROLL CHANGES
@@ -73,28 +73,6 @@ var contentScrollMax = (contentScroll.scrollHeight - contentScroll.clientHeight)
 
 var verticalScrollOffset = memberCardStickyHolder.clientHeight; // Height of the sticky view
 
-// Resizing messes up the horizontal scroll calculations
-window.addEventListener("resize", () => {
-
-  memberCardWidth = memberCardScroll.scrollWidth - memberCardScroll.clientWidth; // Getting the acutal width of it
-  memberCardVerticalVoid.style.height = `${memberCardWidth }px`; // Setting the height to the width of the horizontal scroll view
-
-  verticalScrollOffset = memberCardStickyHolder.clientHeight;
-
-  // ScrollMax needs to be updated on resize as there will be breakponits changing properties of elements
-  contentScrollMax = (contentScroll.scrollHeight - contentScroll.clientHeight);
-
-  relativeScrollStart = ( contentScrollMax - (scrollOffsetView.clientHeight));
-  relativeScollEnd = (contentScrollMax - (verticalScrollOffset));
-
-  if (( relativeScollEnd > contentScroll.scrollTop) && (contentScroll.scrollTop >  relativeScrollStart)) {
-
-    contentScroll.scrollTo({top: relativeScrollStart, left: 0, behavior: "smooth"});
-
-  }
-
-});
-
 contentScroll.addEventListener("scroll", (event) => {
 
   scrollPercentage = (contentScroll.scrollTop / contentScrollMax ) * 100;
@@ -103,7 +81,7 @@ contentScroll.addEventListener("scroll", (event) => {
   relativeScrollStart = ( contentScrollMax - (scrollOffsetView.clientHeight));
   relativeScollEnd = (contentScrollMax - (verticalScrollOffset));
 
-  // document.querySelector(":root").style.setProperty("--scroll-percentage", `${scrollPercentage / 2 }%` );
+  document.querySelector(":root").style.setProperty("--scroll-percentage", `${scrollPercentage / 2 }%` );
 
   // Horizontal Scroll Translation
   // Range Conditions: If scroll position is NOT ABOVE FOOTER and is NOT BELOW MEMBER LIST horizontal view, scroll
@@ -141,6 +119,28 @@ contentScroll.addEventListener("scroll", (event) => {
 
   lastScrollPercentage = scrollPercentage;
   lastScrollPosition = scrollPosition;
+
+});
+
+// Resizing messes up the horizontal scroll calculations
+window.addEventListener("resize", () => {
+
+  memberCardWidth = memberCardScroll.scrollWidth - memberCardScroll.clientWidth;
+  memberCardVerticalVoid.style.height = `${memberCardWidth * 2 }px`;
+
+  verticalScrollOffset = memberCardStickyHolder.clientHeight;
+
+  // ScrollMax needs to be updated on resize as there will be breakponits changing properties of elements
+  contentScrollMax = (contentScroll.scrollHeight - contentScroll.clientHeight);
+
+  relativeScrollStart = ( contentScrollMax - (scrollOffsetView.clientHeight));
+  relativeScollEnd = (contentScrollMax - (verticalScrollOffset));
+
+  if (( relativeScollEnd > contentScroll.scrollTop) && (contentScroll.scrollTop >  relativeScrollStart)) {
+
+    contentScroll.scrollTo({top: relativeScrollStart, left: 0, behavior: "smooth"});
+
+  }
 
 });
 
@@ -193,9 +193,9 @@ function scrollArrowNext() {
   if (previousScrollPos === extraProjectContainer.scrollLeft) {
 
     extraProjectContainer.scrollTo( {
-            top: 0,
-            left: 0,
-            behavior: "smooth",
+      top: 0,
+      left: 0,
+      behavior: "smooth"
     });
 
   } else {
@@ -203,7 +203,7 @@ function scrollArrowNext() {
     extraProjectContainer.scrollBy({
       top: 0,
       left: 300,
-      behavior: "smooth",
+      behavior: "smooth"
     });
 
     previousScrollPos = extraProjectContainer.scrollLeft;
