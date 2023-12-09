@@ -1,3 +1,36 @@
+// || LOCAL VARIABLES
+
+// => Sroller Arrow Control
+@arrow-background: fade(black, 60%);
+@arrow-size: 48px;
+@arrow-icons-color: white;
+@arrow-icons-size: 1.5em;
+
+
+// => Extra-Project Cards
+@extra-project-card-height: 300px;
+@extra-project-card-width: 300px;
+@extra-project-card-border: 20px;
+
+@extra-project-card-information-height: 70px;
+@extra-project-card-information-bg: black;
+
+@extra-project-card-logo: 48px;
+
+@extra-project-card-icons-color: white;
+@extra-project-card-icons-size: 1.5em;
+
+
+section {
+    .head {
+        background: @brand-main;
+        min-height: 0;
+        height: 60px;
+
+    }
+}
+
+// => FULL WIDTH CONTAINER
 .mission-holder {
 
     .vertical-flex;
@@ -19,7 +52,7 @@
     background: black;
 
     overflow: hidden;
-    
+
     .backdrop-logo {
 
         position: absolute;
@@ -62,6 +95,152 @@
 
 }
 
+.arrow-container {
+
+    position: absolute;
+
+    height: 100%;
+    width: 100%;
+    z-index: 3;
+
+    .horizontal-flex;
+    .center-cross;
+
+    .arrow {
+        
+        display: flex;
+
+        mix-blend-mode: difference;
+
+        background: @arrow-background;
+
+        height: @arrow-size;
+        width: @arrow-size;
+        border-radius: 50%;
+
+        .link;
+
+        i {
+            margin: auto;
+            font-size: @arrow-icons-size;
+            font-weight: 600;
+            color: darken(@arrow-icons-color, 5%);
+        }
+        
+        
+    }
+    
+    .space {
+        flex-grow: 2;
+    }
+
+
+}
+
+// => Project card item
+.extra-project-card {
+
+    .horizontal-flex;
+    align-items: flex-end;
+
+    gap: @gap-small;
+
+    margin: @margin-small;
+
+    background-image: url("https://images.pexels.com/photos/18221948/pexels-photo-18221948/free-photo-of-beautiful-brunette-woman-in-white-off-the-shoulder-dress-standing-on-a-beach.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1");
+    background-size: cover;
+    background-repeat: no-repeat;
+
+    border-radius: @extra-project-card-border;
+    overflow: hidden;
+
+    width: @extra-project-card-width;
+    height: @extra-project-card-height;
+
+    .information {
+
+        .horizontal-flex;
+        .center-cross;
+
+        height: @extra-project-card-information-height;
+        width: 100%;
+
+        gap: @gap-small;
+        
+        background-color: @extra-project-card-information-bg;
+        padding: @padding-small;
+                        
+
+        p {
+            flex-grow: 2;
+        }
+
+        img {
+            
+            height: @extra-project-card-logo;
+            width: @extra-project-card-logo;
+            
+            object-fit: cover;
+
+            border-radius: 50%;
+        }
+
+        i {
+            .link;
+            color: @extra-project-card-icons-color;
+            font-size: @extra-project-card-icons-size;
+        }
+
+    }
+    
+}
+
+.extra-projects-container {
+
+    .horizontal-flex;
+    .center-cross;
+
+    align-items: flex-start;
+    flex: 0;
+
+    width: 100%;
+
+    overflow-x: hidden;
+    scrollbar-color: transparent transparent;
+    scroll-snap-type: x mandatory;
+
+    .breakpoint(large, {
+        gap: @gap-default;
+        width: 90%;
+    });
+
+    // Helps it snap to place when scrolled
+    section {
+        
+        .horizontal-flex;
+        .center-main;
+
+        min-width: 32%;
+
+        scroll-snap-align: start;
+
+        .breakpoint(medium;
+            {
+                min-width: 50%;
+            }
+        );
+
+        .breakpoint(small;
+            {
+                min-width: 100%;
+            }
+        );
+
+    }
+
+}
+
+// || ROUNDED CARD
 .bottom-card {
 
     .vertical-flex;
@@ -101,157 +280,15 @@
         overflow: hidden;
 
 
-        @media only screen and (max-width: @breakpoint-medium) {
+        .breakpoint(medium, {
             width: 100%;
-        }
-        @media only screen and (min-width: @breakpoint-medium) {
+        });
+
+        .breakpoint(large, {
             gap: @gap-default;
-            width: 80%;
-        }
+            width: 90%;
+        });
 
-        .arrow-container {
-
-            position: absolute;
-
-            height: 100%;
-            width: 100%;
-            z-index: 3;
-
-            .horizontal-flex;
-            .center-cross;
-
-            .arrow {
-                display: flex;
-                height: 100%;
-                width: 48px;
-                cursor: pointer;
-
-                i {
-                    margin: auto;
-                    font-size: 1.5em;
-                    font-weight: 600;
-                    color: darken(white, 5%);
-                }
-
-                .breakpoint(medium;
-
-                    {
-                        height: 38px;
-                        width: 38px;
-                        border-radius: 50%;
-
-                        i {
-                            font-size: 1em;
-                        }
-
-                    }
-                    
-                )
-                
-                
-            }
-            .arrow-left {
-                .arrow;
-                background: fade(@brand-main, 60%);
-
-            }
-
-            .space {
-                flex-grow: 2;
-            }
-
-            .arrow-right {
-                .arrow;
-                background: fade(@brand-main, 60%);
-            }
-
-        }
-
-        .extra-projects-container {
-
-            .horizontal-flex;
-            .center-cross;
-            align-items: flex-start;
-            flex: 0;
-    
-            width: 100%;
-            overflow-x: hidden;
-            scrollbar-color: transparent transparent;
-    
-            @media only screen and (min-width: @breakpoint-medium) {
-                gap: @gap-default;
-            }
-    
-            scroll-snap-type: x mandatory;
-    
-            // Helps it snap to place when scrolled
-            section {
-                
-                .horizontal-flex;
-                .center-main;
-
-                min-width: 32%;
-    
-                scroll-snap-align: start;
-    
-                .breakpoint(medium;
-
-                    {
-                        min-width: 50%;
-                    }
-
-                );
-
-                .breakpoint(small;
-
-                    {
-                        min-width: 100%;
-                    }
-
-                );
-    
-            }
-    
-            // Project card item
-            .extra-project-card {
-    
-                .horizontal-flex;
-                .center-cross;
-    
-                gap: @gap-small;
-        
-                margin: @margin-small;
-    
-                background-color: @brand-main;
-                padding: @padding-small;
-        
-                border-radius: 20px;
-        
-                width: 300px;
-                
-    
-                p {
-                    flex-grow: 2;
-                }
-    
-                img {
-                    
-                    height: 50px;
-                    width: 50px;
-                    
-                    object-fit: cover;
-    
-                    border-radius: 50%;
-                }
-    
-                i {
-                    cursor: pointer;
-                    font-size: 1.5em;
-                }
-                
-            }
-    
-        }
 
     }
 

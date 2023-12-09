@@ -8,7 +8,7 @@ mixin memberCard(imageUrl, name, position)
 //- This view is nested because it'll be later used to calculate the horizontal scroll start offset
 #member-scroll-placeholder
     .sticky-holder
-        h2.spaced-header-2.text-center#test-1 BRAINS BEHIND THE BEAUTY
+        h2.spaced-header.text-center#test-1 BRAINS BEHIND THE BEAUTY
         .member-card-grid
             - var cats = {"orange":"https://images.pexels.com/photos/1450331/pexels-photo-1450331.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1","happy":"https://images.pexels.com/photos/6865166/pexels-photo-6865166.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1","cute":"https://images.pexels.com/photos/6869635/pexels-photo-6869635.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1","black":"https://images.pexels.com/photos/37337/cat-silhouette-cats-silhouette-cat-s-eyes.jpg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1","snow": "https://images.pexels.com/photos/1084425/pexels-photo-1084425.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1","cool": "https://images.pexels.com/photos/3155894/pexels-photo-3155894.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1","cow": "https://images.pexels.com/photos/16144420/pexels-photo-16144420/free-photo-of-two-cats-sitting-under-a-tree-and-looking-up.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"};
             each member, name in cats
@@ -19,4 +19,16 @@ mixin memberCard(imageUrl, name, position)
     .member-filler-div
 .separator-medium
     
-.join-team
+.contribute
+    section
+        h3.spaced-header.text-center BE PART OF SOMETHING BLISS
+        .join-team
+            .description-group
+                p We are accepting people in small manageable groups while we grow, and we tend to lean towards the type of people that want to learn and grow with BlissLabs. We provide the tools, knowledge and the mentorship needed to help bring your development dreams to reality, and all we ask in return is a minimum contribution towards one of our projects while you learn and grow in your strengths.
+                p.highlight * only volunteer positions currently available. Internships coming soon *
+            include ../partials/inline-logo
+    section
+        h3.spaced-header.text-center BRING YOUR PROJECT TO THE CROWD
+        .description-group
+            p.text-center Got a great open-source project, but having trouble getting things off the ground? Or maybe you are looking to gain a few more people to help you out on it. Whatever your situation is, you can submit your project below to start the review process and join under BlissLabs.
+            p.highlight.text-center.text-link Submit your project now

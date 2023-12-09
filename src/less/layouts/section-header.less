@@ -111,7 +111,7 @@
 .links {
 
     .horizontal-flex;
-    justify-content: center;
+    .center-main;
 
     position: absolute;
 
@@ -120,18 +120,29 @@
     top: 50%;
     left: 50%;
     rotate: 90deg;
-    transform: translateY(calc(@link-item-height * 1.5));
+    transform: translateY(calc(@link-item-height));
 
-    height: @link-item-height;
+    height: calc(@link-item-height * 1.5);
+
+    line-height: calc(@link-item-height * 1.5);
+    text-align: center;
+
     width: 100vw;
 
+    @media only screen and(max-height: 500px) {
+        rotate: 0deg;
+        left: 50%;
+        top: 100%;
+        transform: translate(-50%, calc(-100% - 30px));
+        padding-bottom: @gap-default;
+    }
+
     // => Vertical text
-    p {   
+    span {   
         cursor: pointer;
 
-        height: 50px;
+        display: inline-block;
 
-        padding-top: calc(@link-item-height / 2);
         padding-left: calc(@link-item-height / 3);
 
         letter-spacing: .5em;
@@ -179,7 +190,7 @@
         transform: translate(-50%, calc(-100% - 30px));
         padding-bottom: @gap-default;
         
-        p {
+        span {
             display: none;
         }
 

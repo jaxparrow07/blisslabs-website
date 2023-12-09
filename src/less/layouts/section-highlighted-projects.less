@@ -1,3 +1,18 @@
+// || LOCAL VARIABLES
+
+// => Project Card
+@project-card-height: 356px;
+@project-card-width: 200px; // obsolete
+@project-card-blur: 32px;
+@project-card-radius: 24px;
+
+@project-card-image-scale: 120%;
+
+// => Breakpoint variables
+@project-card-height-phone: 400px;
+@project-card-image-height-phone: 100px;
+
+ @project-card-height-tablet: 300px;
 
 .light-header {
 
@@ -20,12 +35,6 @@
 
 }
 
-@project-card-height: 356px;
-@project-card-width: 200px; // obsolete
-@project-card-blur: 32px;
-@project-card-radius: 24px;
-
-@project-card-image-scale: 120%;
 .project-card {
 
     .horizontal-flex;
@@ -106,10 +115,6 @@
 
 }
 
-// || Phone / Mini
-
-@project-card-height-phone: 400px;
-@project-card-image-height-phone: 100px;
 
 @media only screen and (max-width: @breakpoint-small ) {
   
@@ -159,8 +164,7 @@
  
  }
 
- // || Tablet
-@project-card-height-tablet: 300px;
+
 @media only screen and (max-width: @breakpoint-medium ) {
   
     .project-holder {
