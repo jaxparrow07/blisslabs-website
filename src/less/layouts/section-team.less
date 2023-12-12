@@ -8,7 +8,7 @@
 }
 
 .sticky-holder {
-    top: 5%;
+    top: 10%;
     position: sticky;
     width: 100vw;
 
@@ -102,7 +102,7 @@
     padding-block: @padding-default * 2;
 
     background-color: fade(#06101B, 70%);
-    backdrop-filter: blur(32px);
+    backdrop-filter: if((@enable-effects-mobile), blur(@blur-level-default), none);
 
     .breakpoint(small, {
         width: 100vw;
@@ -136,10 +136,7 @@
 
     gap: @gap-default;
 
-    .highlight {
-        color: lighten(@brand-main, 20%);
-        font-weight: 500;
-    }
+
     
 }
 
@@ -200,13 +197,15 @@
         path {
 
             transform: translate(0%, 0%);
-            transition: transform .5s ease-in-out;
+            transition: all .5s ease-in-out;
+
+            filter: drop-shadow( 0 0 0 black);
             cursor: pointer;
 
             &:hover {
                 transform: translate(0%, -15%);
                 filter: drop-shadow( 2px 10px 10px black);
-                transition: transform .5s ease-in-out;
+                transition: all .5s ease-in-out;
             }
 
 

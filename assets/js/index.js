@@ -1,6 +1,7 @@
 //  || VARIABLES - EASY CUSTOMIZATION
 const EXTRA_PROJECT_SLIDER_INTERVAL = 4000; // ms
 const GRADIENT_ACTIVATE_POSITION = 300; // px
+const NAVIGATION_ACTIVATE_POSITION = 350;
 
 const EASTER_EGG_CLICK_COUNT = 5;
 
@@ -81,7 +82,8 @@ contentScroll.addEventListener("scroll", (event) => {
   relativeScrollStart = ( contentScrollMax - (scrollOffsetView.clientHeight));
   relativeScollEnd = (contentScrollMax - (verticalScrollOffset));
 
-  document.querySelector(":root").style.setProperty("--scroll-percentage", `${scrollPercentage / 2 }%` );
+  // EXPENSIVE TASK FOR A LIL EFFECT
+  //document.querySelector(":root").style.setProperty("--scroll-percentage", `${scrollPercentage / 2 }%` );
 
   // Horizontal Scroll Translation
   // Range Conditions: If scroll position is NOT ABOVE FOOTER and is NOT BELOW MEMBER LIST horizontal view, scroll
@@ -94,6 +96,15 @@ contentScroll.addEventListener("scroll", (event) => {
     console.log(relativeScrollPercentage);
 
     memberCardScroll.style.setProperty("margin-left", `${(scrollByCalc * -1) + 200}px` );
+
+
+  }
+
+  if ((scrollPosition > NAVIGATION_ACTIVATE_POSITION) && (scrollPercentage < 85)) {
+    document.querySelector("header").classList.add("active-header");
+  } else {
+    document.querySelector("header").classList.remove("active-header");
+    document.querySelector(".full-screen-nav").classList.remove("active-full-nav");
 
 
   }
@@ -224,6 +235,11 @@ function autoScrollExtraProjects() {
   }, EXTRA_PROJECT_SLIDER_INTERVAL);
 }
 
+document.querySelector("#expand-menu").addEventListener("click", () => {
+
+  document.querySelector(".full-screen-nav").classList.toggle("active-full-nav");
+
+})
 
 window.addEventListener("load", () => {
   selectProjectCard(0);

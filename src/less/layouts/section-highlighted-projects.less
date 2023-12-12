@@ -3,7 +3,7 @@
 // => Project Card
 @project-card-height: 356px;
 @project-card-width: 200px; // obsolete
-@project-card-blur: 32px;
+@project-card-blur: @blur-level-default;
 @project-card-radius: 24px;
 
 @project-card-image-scale: 120%;
@@ -60,10 +60,12 @@
     .project-logo {
         max-height: auto; 
         max-width: auto;
+        
         transform: scale(@project-card-image-scale);
         background: @brand-legacy;
         mask-image: linear-gradient(black, transparent 90%);
-        transition: max-height @transition-default, max-width @transition-default, mask-image @transition-default, transform @transition-default, margin @transition-default, border-radius @transition-default;
+        
+        transition: all @transition-default;
         
     }
 
@@ -142,9 +144,7 @@
 
             transform: scale(1);
             margin: @margin-default / 2;
-            
-            transition: max-height @transition-default, max-width @transition-default, mask-image @transition-default, transform @transition-default, margin @transition-default, border-radius @transition-default;
-        
+                    
         }
 
         .collapsed-title {
@@ -186,8 +186,8 @@
             mask-image: unset;
             
             transform: scale(1);
-            transition: max-height @transition-default, max-width @transition-default, mask-image @transition-default, transform @transition-default, margin @transition-default, border-radius @transition-default;
-        
+            transition: all @transition-default;
+    
         }
 
         .collapsed-title {
@@ -233,7 +233,7 @@
             mask-image: unset;
 
             transform: scale(1);
-            transition: max-height @transition-default, max-width @transition-default, mask-image @transition-default, transform @transition-default, margin @transition-default, border-radius @transition-default;
+            transition: all @transition-default;
         
         }
     
