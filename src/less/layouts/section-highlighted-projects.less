@@ -118,7 +118,7 @@
 }
 
 
-@media only screen and (max-width: @breakpoint-small ) {
+.breakpoint(small, {    
   
     .project-holder {
         .vertical-flex;
@@ -162,10 +162,10 @@
 
     } 
  
- }
+ });
 
 
-@media only screen and (max-width: @breakpoint-medium ) {
+ .breakpoint(medium, {    
   
     .project-holder {
         .vertical-flex;
@@ -212,21 +212,30 @@
 
     } 
  
- }
+ });
 
 // PC/Big screen
-@media only screen and (min-width: @breakpoint-medium ) {
-    
+.breakpoint(large, {    
    
     .project-card {
         flex-basis: 20%;
+
+        .button {
+            display: none;
+        }
+
+
     }
     
-    .active {
+    .project-card__active {
 
         transition: flex-basis @transition-default;
         flex-basis: 60%;
-    
+
+        .button {
+            display: block;
+        }
+
         .project-logo {
 
             border-radius: @project-card-radius - @padding-small;
@@ -249,4 +258,4 @@
 
     }
     
-}
+});

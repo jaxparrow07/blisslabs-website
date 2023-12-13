@@ -1,0 +1,91 @@
+
+footer {
+
+    .horizontal-flex;
+    flex: 0 0 auto;
+
+    .breakpoint(medium, {
+        .vertical-flex;
+        padding-block: @padding-default;
+
+        gap: @gap-large;
+
+    });
+
+    .center-cross;
+
+    .fill-width;
+
+    padding: @padding-default;
+
+    gap: @gap-default;
+
+    background: black;
+
+    h1 {
+        font-size: 3em;
+        flex-basis: 20%
+    }
+
+    span.head {
+        margin-bottom: @margin-very-small;
+    }
+
+    .organization-info {
+        .vertical-flex;
+        .center-main;
+
+        .breakpoint(medium, {
+            .center-flex;
+
+        });
+
+        gap: @gap-very-small;
+    }
+
+
+
+
+    .organization {
+
+        .horizontal-flex;
+
+        flex-basis: 60%;
+        justify-self: flex-end;
+
+        .breakpoint(medium, {
+            width: 100%;
+        });
+
+        .organization-links {
+
+            .vertical-flex;
+            .center-flex;
+
+            flex-basis: 50%;
+
+
+
+        }
+
+        .organization-socials {
+            .vertical-flex;
+            .center-flex;
+
+
+            flex-basis: 50%;
+            gap: @gap-small;
+
+            .icon-container {
+                .horizontal-flex;
+                gap: @gap-small;
+
+                i {
+                    font-size: 1.5em;
+                }
+
+            }
+        }
+    }
+
+}
