@@ -101,10 +101,10 @@ contentScroll.addEventListener("scroll", (event) => {
   }
 
   if ((scrollPosition > NAVIGATION_ACTIVATE_POSITION) && (scrollPercentage < 85)) {
-    document.querySelector("header").classList.add("active-header");
+    document.querySelector("header").classList.add("header__active");
   } else {
-    document.querySelector("header").classList.remove("active-header");
-    document.querySelector(".full-screen-nav").classList.remove("active-full-nav");
+    document.querySelector("header").classList.remove("header__active");
+    document.querySelector(".full-screen-nav").classList.remove("full-screen-nav__active");
 
 
   }
@@ -162,10 +162,10 @@ const projectCards = document.querySelectorAll(".project-card");
 function selectProjectCard(index) {
   projectCards.forEach((project) => {
 
-    project.classList.remove("active");
+    project.classList.remove("project-card__active");
 
   })
-  projectCards[index].classList.add("active");
+  projectCards[index].classList.add("project-card__active");
 }
 
 projectCards.forEach((project, index) => {
@@ -237,7 +237,7 @@ function autoScrollExtraProjects() {
 
 document.querySelector("#expand-menu").addEventListener("click", () => {
 
-  document.querySelector(".full-screen-nav").classList.toggle("active-full-nav");
+  document.querySelector(".full-screen-nav").classList.toggle("full-screen-nav__active");
 
 })
 
