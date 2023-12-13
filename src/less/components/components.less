@@ -31,6 +31,7 @@
     .fill-width;
 }
 
+
 .text-bold {
     font-weight: 600;
 }
@@ -47,15 +48,14 @@
     text-align: left;
 }
 
+// || MISC
 .separator-medium {
-
     width: 40%;
     height: 8px;
 
     border-radius: 8px;
 
     background: white;
-
 }
 
 .space-medium {
@@ -67,7 +67,7 @@
     scrollbar-color: white transparent;
 }
 
-
+// => Link with visual feedback
 .link {
 
     cursor: pointer;
@@ -83,18 +83,18 @@
     }
 
 }
-
-.highlight {
-    color: lighten(@brand-main, 5%);
-    font-weight: 500;
-}
-
 .text-link {
     .link;
     text-decoration: underline;
 }
 
-// Responsive texts
+// => Brand color for texts
+.highlight {
+    color: lighten(@brand-main, 5%);
+    font-weight: 500;
+}
+
+// || RESPONSIVE HEADERS
 h1.spaced-header {
     letter-spacing: .5em;
     margin-right: -.5em;

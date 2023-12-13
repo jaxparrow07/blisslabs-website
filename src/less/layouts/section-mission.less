@@ -21,7 +21,9 @@
 @extra-project-card-icons-size: 1.5em;
 
 
+// || MISSION
 section {
+    
     .head {
         background: @brand-main;
         min-height: 0;
@@ -78,27 +80,29 @@ section {
         .vertical-flex;
         gap: 8px;
         z-index: 3;
-
-        @media only screen and (max-width: @breakpoint-medium) {
-            width: 80%;
-        }
-
-        @media only screen and (max-width: @breakpoint-small) {
-            width: 100%;
-        }
-
-        @media only screen and (min-width: @breakpoint-medium) {
-            width: 60%;
-        }
+        width: 60%;
 
         &:nth-child(2) {
             align-self: flex-end;
         }
 
+        .breakpoint(medium, {
+            width: 80%;
+
+        });
+
+        .breakpoint(small, {
+            width: 100%;
+
+        });
+        
+
     }
 
 }
 
+
+// || EXTRA PROJECTS
 .arrow-container {
 
     position: absolute;
@@ -245,7 +249,7 @@ section {
 
 }
 
-// || ROUNDED CARD
+// => Rounded card effect
 .bottom-card {
 
     .vertical-flex;

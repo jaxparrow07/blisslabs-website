@@ -108,7 +108,7 @@
 
 @link-item-height: 30px;
 
-.links {
+.header-links {
 
     .horizontal-flex;
     .center-main;
@@ -181,7 +181,7 @@
     }
 }
 
-@media only screen and (max-width: 600px ) {
+.breakpoint(small, {
 
     .links {
         rotate: 0deg;
@@ -212,7 +212,7 @@
     }
     
     
-}
+});
         
 .separator-medium[id=for-header] {
     display: none;

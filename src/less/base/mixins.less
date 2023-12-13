@@ -32,7 +32,6 @@
 }
 
 // || GEOMETRY
-
 .support-height {
     height: 100svh;
 }
@@ -50,7 +49,11 @@
     width: 100vw;
 }
 
-// BREAKPOINTS
+/* || BREAKPOINTS
+Usage: .breakpoint( size[small, medium, large], {  CSS RULES  });
+
+ -> Can be nested within layouts ( doesn't have to be a top level rule )
+*/
 .breakpoint(small,@rules) {
     @media only screen and (max-width: @breakpoint-small) {@rules();}
 }
