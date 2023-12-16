@@ -51,8 +51,6 @@ var memberCardVerticalVoid = document.querySelector(".member-filler-div");
 
 var memberCardStickyHolder = document.querySelector(".sticky-holder");
 
-var memberCardWidth = memberCardScroll.scrollWidth - memberCardScroll.clientWidth; // Getting the acutal width of it
-memberCardVerticalVoid.style.height = `${memberCardWidth * 2}px`; // Setting the height to the width of the horizontal scroll view
 
 // 
 // => SCROLL CHANGES
@@ -68,19 +66,66 @@ relativeScrollStart,
 relativeScollEnd,
 
 scrollPercentage,
-scrollPosition;
+scrollPosition,
 
-var contentScrollMax = (contentScroll.scrollHeight - contentScroll.clientHeight); // Maximum scroll of the top parent view ( CONTENT )
+scrollRatio;
 
-var verticalScrollOffset = memberCardStickyHolder.clientHeight; // Height of the sticky view
+var contentScrollMax,
+verticalScrollOffset,
+memberCardWidth;
+
+updateScrollCalculations("init");
+
+/*
+
+  Necessary scroll calculations
+
+*/
+function updateScrollCalculations(state) {
+
+  switch(state) {
+    case "init":
+
+      memberCardWidth = memberCardScroll.scrollWidth - memberCardScroll.clientWidth; // Getting the acutal width of it
+
+      // Scroll Ratio avoids the member card from completely disappearing on big screens by adding an offset value
+      if (contentScroll.clientWidth > 1200) {
+        memberCardVerticalVoid.style.height = `${memberCardWidth * 2 }px`;
+        scrollRatio = -400;
+
+      } else {
+        memberCardVerticalVoid.style.height = `${memberCardWidth * 1 }px`;
+        scrollRatio = 0;
+      }
+
+      contentScrollMax = (contentScroll.scrollHeight - contentScroll.clientHeight); // Maximum scroll of the top parent view ( CONTENT )
+      verticalScrollOffset = memberCardStickyHolder.clientHeight; // Height of the sticky view
+
+      relativeScrollStart = ( contentScrollMax - (scrollOffsetView.clientHeight));
+      relativeScollEnd = (contentScrollMax - (verticalScrollOffset));
+
+      break;
+    
+    case "scroll":
+      lastScrollPercentage = scrollPercentage;
+      lastScrollPosition = scrollPosition;
+      
+      scrollPercentage = (contentScroll.scrollTop / contentScrollMax ) * 100;
+      scrollPosition = contentScroll.scrollTop;
+      break;
+    
+    case "resize":
+      updateScrollCalculations("init");
+      break;
+
+  }
+
+}
 
 contentScroll.addEventListener("scroll", (event) => {
 
-  scrollPercentage = (contentScroll.scrollTop / contentScrollMax ) * 100;
-  scrollPosition = contentScroll.scrollTop;
 
-  relativeScrollStart = ( contentScrollMax - (scrollOffsetView.clientHeight));
-  relativeScollEnd = (contentScrollMax - (verticalScrollOffset));
+  updateScrollCalculations("scroll");
 
   // EXPENSIVE TASK FOR A LIL EFFECT
   //document.querySelector(":root").style.setProperty("--scroll-percentage", `${scrollPercentage / 2 }%` );
@@ -95,7 +140,7 @@ contentScroll.addEventListener("scroll", (event) => {
 
     console.log(relativeScrollPercentage);
 
-    memberCardScroll.style.setProperty("margin-left", `${(scrollByCalc * -1) + 200}px` );
+    memberCardScroll.style.setProperty("margin-left", `${(scrollByCalc * -1) - scrollRatio}px` );
 
 
   }
@@ -128,24 +173,14 @@ contentScroll.addEventListener("scroll", (event) => {
     
   }
 
-  lastScrollPercentage = scrollPercentage;
-  lastScrollPosition = scrollPosition;
+
 
 });
 
 // Resizing messes up the horizontal scroll calculations
 window.addEventListener("resize", () => {
 
-  memberCardWidth = memberCardScroll.scrollWidth - memberCardScroll.clientWidth;
-  memberCardVerticalVoid.style.height = `${memberCardWidth * 2 }px`;
-
-  verticalScrollOffset = memberCardStickyHolder.clientHeight;
-
-  // ScrollMax needs to be updated on resize as there will be breakponits changing properties of elements
-  contentScrollMax = (contentScroll.scrollHeight - contentScroll.clientHeight);
-
-  relativeScrollStart = ( contentScrollMax - (scrollOffsetView.clientHeight));
-  relativeScollEnd = (contentScrollMax - (verticalScrollOffset));
+  updateScrollCalculations("resize");
 
   if (( relativeScollEnd > contentScroll.scrollTop) && (contentScroll.scrollTop >  relativeScrollStart)) {
 

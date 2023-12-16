@@ -26,8 +26,8 @@
     .horizontal-flex;
     .center-cross;
   
-    width: 100vw;
-
+    width: 0vw;
+    // USING CLIENT WIDTH, avoids the
 
     justify-content: flex-start;
     
@@ -76,6 +76,11 @@
         // First and last elements having their corners cut to match with the soft edge design
         &:nth-child(1) {
             border-radius: calc(@border-auto / 2) 0 0 calc(@border-auto / 2);
+
+            .breakpoint(small, {
+                margin-left: 40vw;
+            });
+
         }
 
         &:nth-last-child(1) {
