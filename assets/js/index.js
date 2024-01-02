@@ -26,7 +26,7 @@ function letItGlow() {
 
     contentScroll.scrollTop = 0;
     document.querySelector(".brand").classList.add("easter-egg-animation");
-    document.querySelector(".links").style.setProperty("display", "none");
+    document.querySelector(".header-links").style.setProperty("display", "none");
     document.querySelector(".content").style.setProperty("overflow-y", "hidden");
 
   }
