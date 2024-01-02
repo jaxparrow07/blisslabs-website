@@ -22,7 +22,7 @@
 
     transition: @transition-default !important;
 
-    ul {
+    .link {
 
         opacity: 0%;
         animation: slide-in @item-transition-time_-long forwards !important;
@@ -65,7 +65,7 @@
     transition: @transition-default;
 
 
-    ul {
+    .link {
 
         .center-flex;
         .fill-width;
@@ -176,8 +176,13 @@ header {
 
         });
 
+        svg {
+            width: 50px;
+            height: 25px;
+            fill: white;
+        }
 
-        ul {
+        .link {
 
             .breakpoint(small, {
                 
@@ -189,11 +194,7 @@ header {
 
             });
 
-            svg {
-                width: 50px;
-                height: 25px;
-                fill: white;
-            }
+
 
         }
 
