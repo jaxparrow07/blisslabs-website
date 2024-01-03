@@ -138,8 +138,6 @@ contentScroll.addEventListener("scroll", (event) => {
     const relativeScrollPercentage = (((scrollPosition - relativeScrollStart) / (relativeScollEnd - relativeScrollStart) ) * 100);
     const scrollByCalc = ( (memberCardWidth + window.innerWidth) * relativeScrollPercentage ) / 100;
 
-    console.log(relativeScrollPercentage);
-
     memberCardScroll.style.setProperty("margin-left", `${(scrollByCalc * -1) - scrollRatio}px` );
 
 

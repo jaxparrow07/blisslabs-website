@@ -11,7 +11,7 @@ mixin memberCard(imageUrl, name, position)
 //- This view is nested because it'll be later used to calculate the horizontal scroll start offset
 #member-scroll-placeholder
     .sticky-holder
-        h2.spaced-header.text-center#test-1 BRAINS BEHIND THE BEAUTY
+        h2.spaced-header.text-center BRAINS BEHIND THE BEAUTY
         .member-card-grid
             each member, name in cats
                 +memberCard(`${member}`, `${name}`, "CAR")
