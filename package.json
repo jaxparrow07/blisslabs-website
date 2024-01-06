@@ -21,6 +21,8 @@
     "sass": "^1.53.0"
   },
   "dependencies": {
-    "gulp-less": "^5.0.0"
+    "gulp-less": "^5.0.0",
+    "request-sync": "^1.0.0",
+    "sync-request": "^6.1.0"
   }
 }
