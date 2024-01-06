@@ -1,7 +1,9 @@
 //- LOCAL MIXIN
-mixin extraProjectCard(imageUrl, name, github, website)
+mixin extraProjectCard(imageUrl, name, description, github, website)
     section
         .extra-project-card
+            p #{description}
+
             .information
                 img(src=`${imageUrl}`)
                 span #{name}
@@ -32,21 +34,15 @@ section
 
 
     .bottom-card
-        p BLISS FAMILY
+        span.color-black BLISS FAMILY
 
         .scroller-layout
             .arrow-container
                 .arrow#extra-project-left
                     i.bi.bi-arrow-left
-                .space
+                    
                 .arrow#extra-project-right
                     i.bi.bi-arrow-right
             .extra-projects-container#extra-project-container
-
-                +extraProjectCard("https://internal.blisslabs.org/storage/6/61ca78df1b27d_SG_Asset_2.png", "SupremeGamers","https://google.com","https://google.com" )
-                +extraProjectCard("https://internal.blisslabs.org/storage/2/61ca77196da33_android-generic.png", "AndroidGeneric","https://google.com","https://google.com" )
-                +extraProjectCard("https://internal.blisslabs.org/storage/5/61ca7893cf9b5_boringdroid.png", "BoringDroid","https://google.com","https://google.com" )
-                +extraProjectCard("https://internal.blisslabs.org/storage/5/61ca7893cf9b5_boringdroid.png", "BoringDroid","https://google.com","https://google.com" )
-                +extraProjectCard("https://internal.blisslabs.org/storage/5/61ca7893cf9b5_boringdroid.png", "BoringDroid","https://google.com","https://google.com" )
-                +extraProjectCard("https://internal.blisslabs.org/storage/5/61ca7893cf9b5_boringdroid.png", "BoringDroid","https://google.com","https://google.com" )
-                +extraProjectCard("https://internal.blisslabs.org/storage/5/61ca7893cf9b5_boringdroid.png", "BoringDroid","https://google.com","https://google.com" )
+                for project in highlightedProjects
+                    +extraProjectCard(project.project_avatar, project.project, project.project_description, project.project_github, project.project_website )

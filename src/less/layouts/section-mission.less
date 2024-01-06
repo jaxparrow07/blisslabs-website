@@ -71,7 +71,7 @@ section {
 
         transform: translate(-40%, -70%);
 
-        svg { fill: fade(white, 10%) !important; height: 100%; width: 100%; }
+        svg { fill: fade(white, 15%) !important; height: 100%; width: 100%; }
 
     }
 
@@ -114,9 +114,18 @@ section {
     .horizontal-flex;
     .center-cross;
 
+    #extra-project-left {
+        left: 0%;
+    }
+
+    #extra-project-right {
+        right: 0%;
+    }
     .arrow {
         
-        display: flex;
+        position: absolute;
+        display: grid;
+        place-items: center;
 
         mix-blend-mode: difference;
 
@@ -124,6 +133,7 @@ section {
 
         height: @arrow-size;
         width: @arrow-size;
+
         border-radius: 50%;
 
         .link;
@@ -134,12 +144,8 @@ section {
             font-weight: 600;
             color: darken(@arrow-icons-color, 5%);
         }
-        
-        
-    }
+      
     
-    .space {
-        flex-grow: 2;
     }
 
 
@@ -147,15 +153,15 @@ section {
 
 // => Project card item
 .extra-project-card {
-
     .horizontal-flex;
     align-items: flex-end;
-
     gap: @gap-small;
+
+    position: relative;
 
     margin: @margin-small;
 
-    background-image: url("https://images.pexels.com/photos/18221948/pexels-photo-18221948/free-photo-of-beautiful-brunette-woman-in-white-off-the-shoulder-dress-standing-on-a-beach.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1");
+    background-image: url("../images/project_placeholder.webp");
     background-size: cover;
     background-repeat: no-repeat;
 
@@ -164,6 +170,18 @@ section {
 
     width: @extra-project-card-width;
     height: @extra-project-card-height;
+
+    p {
+        width: 80%;
+        font-size: .8em;
+
+        position: absolute;
+        top: 10%;
+        left: 50%;
+
+        transform: translate(-50%, 0%);
+
+    }
 
     .information {
 
@@ -269,11 +287,10 @@ section {
 
     background-color: white;
 
-    p:nth-child(1) {
-        color: black;
+    span:nth-child(1) {
         letter-spacing: .2em;
-        
     }
+
 
     .scroller-layout {
 
