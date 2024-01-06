@@ -4,7 +4,9 @@ var gulp        = require('gulp'),
     pug         = require('gulp-pug'),
     plumber     = require('gulp-plumber'),
     rename      = require('gulp-rename'),
-    autoprefixer = require('gulp-autoprefixer');
+    autoprefixer = require('gulp-autoprefixer'),
+    request = require('sync-request');
+
 
 function reload(done) {
     connect.server({
@@ -13,6 +15,12 @@ function reload(done) {
     });
     done();
 }
+
+const blissApi = "https://api.blissroms.org/api"
+var memberData, projectData;
+
+memberData = JSON.parse(request('GET', `${blissApi}/teambliss`).getBody());
+projectData = JSON.parse(request('GET', `${blissApi}/allprojects`).getBody());
 
 function styles() {
     return (
@@ -47,7 +55,11 @@ function views() {
             .pipe(pug({
                 blade: false,
                 pretty: true,
-                basedir: 'src/pug', // Specify the base directory for Pug includes
+                basedir: 'src/pug',
+                data: {
+                    highlightedProjects: projectData,
+                    team: memberData
+                }
             }))
             .pipe(gulp.dest('./'))
             .pipe(connect.reload())
