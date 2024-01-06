@@ -10,11 +10,21 @@
 @gradient-active: #06919c;
 
 // Assets
-@default-background: url("");
+@background-default: url("");
 
 // || Default variables - globally avaiable
-@transition-default: .15s ease-in-out;
-@transition-curve: .15s cubic-bezier(.98,0,.34,.66);
+@transition-timing-default: .75s;
+
+@transition-default: @transition-timing-default ease-in-out;
+@transition-curve: @transition-timing-default cubic-bezier(.98,0,.34,.66);
+
+// => Used in delays, subtle changes within grouped elements
+@transition-sub-step_-mid: .5s;
+@transition-sub-step_-quick: .15s;
+
+// => Longer delays
+@transition-sub-step_-long: @transition-timing-default;
+
 
 @margin-very-small: 8px;
 @margin-small: 16px;
@@ -33,12 +43,13 @@
 @border-auto: 48px;
 
 @blur-level-default: 32px;
+
 /*  
-    => INTERPRETATION BY MIXIN
+    => INTERPRETATION BY MIXIN ( for width )
     
-    small - 700/-
-    medium - 700-1200
-    large - medium
+    phone - below medium
+    tab - small to medium
+    desktop - medium and beyond
 
 */
 @breakpoint-small: 700px;
