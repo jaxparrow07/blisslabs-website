@@ -12,7 +12,7 @@
 @project-card-height-phone: 400px;
 @project-card-image-height-phone: 100px;
 
- @project-card-height-tablet: 300px;
+@project-card-height-tablet: 300px;
 
 .light-header {
 
@@ -53,7 +53,7 @@
     flex-grow: auto;
     gap: @gap-small;
     
-    transition: flex-basis .15s .15s ease-in-out;
+    transition: flex-basis @transition-timing-default ease-in-out;
 
     cursor: pointer;
 
@@ -72,12 +72,13 @@
     .collapsed-title {
 
         position: absolute;
-        top: 100%;
         left: 50%;
-        transform: translate(-50%, -120%);
+        bottom: 0%;
+
+        transform: translate(-50%, -50%);
         font-size: 1.3rem;
         opacity: 100%;
-        transition: top .15s ease-in-out;
+        transition: bottom @transition-sub-step_-mid ease-in-out;
 
     }
     .info {
@@ -150,7 +151,7 @@
         .collapsed-title {
 
             top: 140%; 
-            transition: top .15s ease-in-out;
+            transition: top @transition-sub-step_-quick ease-in-out;
 
         }
 
@@ -192,12 +193,12 @@
 
         .collapsed-title {
             top: 140%; 
-            transition: top .15s ease-in-out;
+            transition: top @transition-sub-step_-quick ease-in-out;
         }
 
         .info {
             opacity: 100%;
-            transition: opacity .15s .15s ease-in-out;
+            transition: opacity @transition-sub-step_-quick @transition-sub-step_-quick ease-in-out;
 
             p {
                 font-size: .9rem;
@@ -234,7 +235,7 @@
     
     .project-card__active {
 
-        transition: flex-basis @transition-default;
+        transition: flex-basis @transition-timing-default ease-in-out;
         flex-basis: 60%;
 
         .button {
@@ -252,13 +253,13 @@
         }
     
         .collapsed-title {
-            top: 140%; 
-            transition: top .15s ease-in-out;
+            bottom: -30%; 
+            transition: bottom @transition-sub-step_-mid ease-in-out;
         }
     
         .info {
             opacity: 100%;
-            transition: opacity .15s .15s ease-in-out;
+            transition: opacity @transition-sub-step_-mid @transition-sub-step_-mid ease-in-out;
         }
 
     }
