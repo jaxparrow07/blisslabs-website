@@ -18,8 +18,11 @@ h1, h2, h3, h4, h5, p, i, span, pre, a {
 }
 
 p, span, pre {
-  font-weight: 400;
+  .breakpoint(large, {
+    font-weight: 400;
+  });
 }
+
 
 body {
 
