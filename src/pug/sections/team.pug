@@ -3,18 +3,15 @@ mixin memberCard(imageUrl, name, position)
         img(src=`${imageUrl}`)
         .vertical-flex.center-main.center-cross.fill-width
             h3 #{name}
-            p #{position}
-
-- var cats = {"orange":"https://images.pexels.com/photos/1450331/pexels-photo-1450331.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1","happy":"https://images.pexels.com/photos/6865166/pexels-photo-6865166.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1","cute":"https://images.pexels.com/photos/6869635/pexels-photo-6869635.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1","black":"https://images.pexels.com/photos/37337/cat-silhouette-cats-silhouette-cat-s-eyes.jpg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1","snow": "https://images.pexels.com/photos/1084425/pexels-photo-1084425.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1","cool": "https://images.pexels.com/photos/3155894/pexels-photo-3155894.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1","cow": "https://images.pexels.com/photos/16144420/pexels-photo-16144420/free-photo-of-two-cats-sitting-under-a-tree-and-looking-up.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"};
-
+            span #{position}
 
 //- This view is nested because it'll be later used to calculate the horizontal scroll start offset
 #member-scroll-placeholder
     .sticky-holder
         h2.spaced-header.text-center BRAINS BEHIND THE BEAUTY
         .member-card-grid
-            each member, name in cats
-                +memberCard(`${member}`, `${name}`, "CAR")
+            each member in team
+                +memberCard(member.avatar, member.member, member.designation)
 
 
     .member-filler-div
