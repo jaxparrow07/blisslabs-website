@@ -16,19 +16,22 @@
 .background-img {
 
     .fill-viewport;
-    height: 100%;
+    height: 100vh;
 
     position: absolute;
     overflow: hidden;
 
     background-image: @background-default;
 
+    .breakpoint(medium, {
+        background-image: @background-mid;
+    });
+
     .breakpoint(small, {
-       background-image: @background-mid;
+       background-image: @background-low;
     });
 
     background-repeat: no-repeat;
-    background-size: cover;
 
     filter: brightness(@background-brightness);
 
