@@ -1,5 +1,5 @@
 @item-transition-time_-quick: @transition-sub-step_-mid;
-@item-transition-time_-long: @transition-timing-default;
+@item-transition-time_-long: @transition-sub-step_-mid;
 
 // || ACTIVE STATES - controlled by javascript scroll handling
 .header__active {
@@ -75,7 +75,7 @@
 
         transform: translateX(0%);
 
-        background-color: @brand-main;
+        background-color: darken(@brand-main, 5%); // FIX: contrast for white text
 
         animation: slide-out @item-transition-time_-quick ease forwards;
         transition: flex-basis @item-transition-time_-quick, background-color @item-transition-time_-quick;
