@@ -1,7 +1,10 @@
 //  || VARIABLES - EASY CUSTOMIZATION
 const EXTRA_PROJECT_SLIDER_INTERVAL = 4000; // ms
+const NAVIGATION_SCROLL_DELAY = 250; // ms
+
 const GRADIENT_ACTIVATE_POSITION = 300; // px
 const NAVIGATION_ACTIVATE_POSITION = 350;
+
 
 const EASTER_EGG_CLICK_COUNT = 5;
 
@@ -26,7 +29,10 @@ function letItGlow() {
 
     contentScroll.scrollTop = 0;
     document.querySelector(".brand").classList.add("easter-egg-animation");
-    document.querySelector(".header-links").style.setProperty("display", "none");
+
+    document.querySelectorAll(".header-links, .slogan-container ").forEach((element) => { 
+      element.style.setProperty("display", "none") });
+
     document.querySelector(".content").style.setProperty("overflow-y", "hidden");
 
   }
@@ -43,6 +49,14 @@ function requestFullScreen(element) {
 
 }
 
+// Slogan tooltip
+document.querySelectorAll('.slogan-scroller span').forEach((text) => {
+
+  text.addEventListener('mouseover',() => {
+    document.querySelector('.slogan-tooltip p').innerHTML = text.dataset.extra;
+  });
+
+});
 
 // || HORIZONTAL SCROLL
 
@@ -122,16 +136,36 @@ function updateScrollCalculations(state) {
 
 }
 
+function isSmoothScroll(event) {
+  // Check if the event details indicate a smooth scroll
+  if (event.detail) {
+      return event.detail === 1; // Check for detail equal to 1 for Firefox
+  } else if (event.wheelDelta) {
+      return event.wheelDelta === -120; // Check for wheelDelta equal to -120 for other browsers
+  } else {
+      // Additional checks may be needed depending on your specific use case
+      return false;
+  }
+}
+
 contentScroll.addEventListener("scroll", (event) => {
 
 
   updateScrollCalculations("scroll");
 
+  if (isSmoothScroll(event)) {
+    // Handle smooth scroll
+    console.log('Smooth scroll detected');
+} else {
+    // Handle user-initiated scroll
+    console.log('User-initiated scroll detected');
+  }
+
   // EXPENSIVE TASK FOR A LIL EFFECT
   //document.querySelector(":root").style.setProperty("--scroll-percentage", `${scrollPercentage / 2 }%` );
 
   // Horizontal Scroll Translation
-  // Range Conditions: If scroll position is NOT ABOVE FOOTER and is NOT BELOW MEMBER LIST horizontal view, scroll
+  // Range Conditions: If scroll position is ABOVE FOOTER and is BELOW MEMBER LIST horizontal view, scroll
   if ( ( relativeScollEnd > contentScroll.scrollTop) && (contentScroll.scrollTop >  relativeScrollStart) ) {
 
     // Relative percentage of the horizontally scrollable part
@@ -143,32 +177,15 @@ contentScroll.addEventListener("scroll", (event) => {
 
   }
 
-  if ((scrollPosition > NAVIGATION_ACTIVATE_POSITION) && (scrollPercentage < 85)) {
+  if (lastScrollPosition < scrollPosition) {
+
     document.querySelector("header").classList.add("header__active");
+
   } else {
+
     document.querySelector("header").classList.remove("header__active");
     document.querySelector(".full-screen-nav").classList.remove("full-screen-nav__active");
 
-
-  }
-
-  if (scrollPosition > GRADIENT_ACTIVATE_POSITION) 
-  { 
-    spotGradient.classList.add("spot-2-state");
-    
-  } else {
-    
-    if (Object.values(spotGradient.classList).includes("spot-2-state")) {
-      
-      spotGradient.classList.add("spot-2-state-remove");
-      setTimeout( () => {
-        spotGradient.classList.remove("spot-2-state");
-        spotGradient.classList.remove("spot-2-state-remove");
-
-      }, 1000);
-
-    }
-    
   }
 
 
@@ -268,11 +285,32 @@ function autoScrollExtraProjects() {
   }, EXTRA_PROJECT_SLIDER_INTERVAL);
 }
 
+// => Full screen navigation
 document.querySelector("#expand-menu").addEventListener("click", () => {
 
-  document.querySelector(".full-screen-nav").classList.toggle("full-screen-nav__active");
+  var fullScreenNav = document.querySelector(".full-screen-nav");
 
-})
+  fullScreenNav.classList.toggle("full-screen-nav__active");
+  
+  fullScreenNav.querySelectorAll(".link").forEach((elem) => {
+
+    elem.addEventListener("click", () => {
+
+      fullScreenNav.classList.remove("full-screen-nav__active");
+
+      setTimeout(() => {
+
+        document.querySelector(elem.dataset.link).scrollIntoView();
+
+      }, 500);
+
+    });
+
+  });
+  
+
+
+});
 
 window.addEventListener("load", () => {
   selectProjectCard(0);
