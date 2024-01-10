@@ -64,6 +64,15 @@
 
     transition: @transition-default;
 
+    .donate {
+
+        background-color: white !important;
+
+        h3 {
+            color: black
+        }
+
+    }
 
     .link {
 
@@ -182,7 +191,34 @@ header {
             fill: white;
         }
 
-        .link {
+        .donate {
+
+            font-size: .9em;
+
+            padding: @padding-very-small;
+            padding-inline: @padding-small;
+            border-radius: @border-auto;
+
+            border: 1px @brand-main solid;
+
+            cursor: pointer;
+
+            transition: @transition-sub-step_-mid;
+            text-decoration: none;
+
+            &:hover {
+                background-color: white;
+                color: black;
+
+                border: 1px transparent solid;
+
+                transition: @transition-sub-step_-mid;
+
+            }
+
+        }
+
+        .link, .donate {
 
             .breakpoint(small, {
                 
@@ -193,8 +229,6 @@ header {
                 }
 
             });
-
-
 
         }
 

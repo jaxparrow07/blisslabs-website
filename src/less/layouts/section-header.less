@@ -220,7 +220,7 @@
     top: 50%;
     left: 50%;
     rotate: 90deg;
-    transform: translateY(calc(@link-item-height));
+    transform: translate(calc(3 * -.5rem), calc(@link-item-height)); // Translation in the X is due to the extra space that `letter-spacing` adds
 
     height: calc(@link-item-height * 1.5);
 
@@ -238,7 +238,7 @@
     }
 
     // => Vertical text
-    span {   
+    a span {   
         cursor: pointer;
 
         display: inline-block;
@@ -254,11 +254,12 @@
             transform: translate(0%, 30%);
             transition: transform .2s ease-in-out;
         }
+        
     }
 
 
     // => Horizontal Icons
-    i {
+    a i {
         display: none;
         padding-bottom: @gap-default;
 
@@ -290,11 +291,11 @@
         transform: translate(-50%, calc(-100% - 30px));
         padding-bottom: @gap-default;
         
-        span {
+        a span {
             display: none;
         }
 
-        i {
+        a i {
             display: block;
         }
     }
