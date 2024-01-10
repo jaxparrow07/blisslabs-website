@@ -136,30 +136,11 @@ function updateScrollCalculations(state) {
 
 }
 
-function isSmoothScroll(event) {
-  // Check if the event details indicate a smooth scroll
-  if (event.detail) {
-      return event.detail === 1; // Check for detail equal to 1 for Firefox
-  } else if (event.wheelDelta) {
-      return event.wheelDelta === -120; // Check for wheelDelta equal to -120 for other browsers
-  } else {
-      // Additional checks may be needed depending on your specific use case
-      return false;
-  }
-}
 
 contentScroll.addEventListener("scroll", (event) => {
 
-
   updateScrollCalculations("scroll");
 
-  if (isSmoothScroll(event)) {
-    // Handle smooth scroll
-    console.log('Smooth scroll detected');
-} else {
-    // Handle user-initiated scroll
-    console.log('User-initiated scroll detected');
-  }
 
   // EXPENSIVE TASK FOR A LIL EFFECT
   //document.querySelector(":root").style.setProperty("--scroll-percentage", `${scrollPercentage / 2 }%` );
