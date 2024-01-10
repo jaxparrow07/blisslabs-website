@@ -5,7 +5,8 @@ header
         a.link(href="#highlighted-projects", aria-label="Anchor to Projects") Projects
         a.link(href="#mission", aria-label="Anchor to Mission") Mission
         a.link.highlight(href="#volunteer", aria-label="Anchor to Volunteer") Volunteer
-        
+        a.donate(href="https://opencollective.com/blisslabs", target="_blank", aria-label="Donate") Donate
+
         div#expand-menu.link(aria-label="Toggle Naviation Menu")
             i.bi.bi-list
 
@@ -16,3 +17,5 @@ header
             h3.spaced-header MISSION
         a.link(data-link="#volunteer", aria-label="Navigate to Volunteer")
             h3.spaced-header VOLUNTEER
+        a.link.donate(href="https://opencollective.com/blisslabs", target="_blank", data-link="#volunteer", aria-label="Navigate to Volunteer")
+            h3.spaced-header DONATE
