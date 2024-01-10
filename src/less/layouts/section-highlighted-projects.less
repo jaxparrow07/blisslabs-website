@@ -45,8 +45,13 @@
 
     padding: @padding-small;
     border-radius: @project-card-radius;
-    
-    backdrop-filter: if((@enable-effects-mobile), blur(@project-card-blur), none);
+
+    backdrop-filter: blur(@project-card-blur);
+
+    .breakpoint(small, {
+        backdrop-filter: if((@enable-effects-mobile), blur(@project-card-blur), none);
+    });
+
     border: fade(white, 20%) 2px solid;
 
     overflow: hidden;

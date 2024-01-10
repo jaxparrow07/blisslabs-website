@@ -122,11 +122,14 @@
     padding-block: @padding-default * 2;
 
     background-color: fade(#06101B, 70%);
-    backdrop-filter: if((@enable-effects-mobile), blur(@blur-level-default), none);
+
+    backdrop-filter: blur(@project-card-blur);
 
     .breakpoint(small, {
         width: 100vw;
         border-radius: 0;
+        backdrop-filter: if((@enable-effects-mobile), blur(@project-card-blur), none);
+
     });
 
     section {
