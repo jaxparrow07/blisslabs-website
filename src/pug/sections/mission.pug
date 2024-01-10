@@ -5,14 +5,14 @@ mixin extraProjectCard(imageUrl, name, description, github, website)
             p #{description}
 
             .information
-                img(src=`${imageUrl}`)
+                img(src=`${imageUrl}`, alt="")
                 span #{name}
-                a.link(href=`${github}`, target="_blank")
+                a.link(href=`${github}`, target="_blank", aria-label=`Project ${name}'s github repository`)
                     i.bi.bi-github
-                a.link(href=`${website}`, target="_blank")
+                a.link(href=`${website}`, target="_blank", aria-label=`Project ${name}'s homepage`)
                     i.bi.bi-globe
 
-section
+section#mission
     .mission-holder.head
 
         section

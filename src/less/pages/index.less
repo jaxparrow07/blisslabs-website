@@ -13,16 +13,36 @@
 
 
 // => Gradient Background
-.background {
-
+.background-img {
 
     .fill-viewport;
-    height: 100vh;
+    height: 100%;
 
     position: absolute;
     overflow: hidden;
 
-    filter: blur(32px);
+    background-image: @background-default;
+
+    .breakpoint(small, {
+       background-image: @background-mid;
+    });
+
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    filter: brightness(@background-brightness);
+
+}
+
+.background {
+
+    .fill-viewport;
+    height: 100%;
+
+    position: absolute;
+    overflow: hidden;
+
+    background-color: @brand-secondary;
 
 }
 
@@ -95,6 +115,7 @@
 
     z-index: 2;
     height: 100vh;
+    
     overflow-y: scroll;
     overflow-x: hidden;
     
@@ -117,13 +138,6 @@
 
     gap: @gap-default;
     padding: @padding-default;
-
-    background-image: @background-default;
-    background-attachment: fixed;
-    background-repeat: no-repeat;
-
-    background-size: cover;
-
 
     border-radius: @border-auto @border-auto 0 0;
 

@@ -27,7 +27,6 @@
     .center-cross;
   
     width: 0vw;
-    // USING CLIENT WIDTH, avoids the
 
     justify-content: flex-start;
     
@@ -53,11 +52,13 @@
 
         background-color: black;
 
+        border-radius: 4px;
+
 
         .vertical-flex {
             position: absolute;
-            top: 100%;
-            transform: translate(0%, -120%);
+            bottom: 0%;
+            transform: translate(0%, -20%);
         }
 
         img {
@@ -83,7 +84,7 @@
 
         // First and last elements having their corners cut to match with the soft edge design
         &:nth-child(1) {
-            border-radius: calc(@border-auto / 2) 0 0 calc(@border-auto / 2);
+            border-radius: calc(@border-auto / 2) 4px 4px calc(@border-auto / 2);
 
             .breakpoint(small, {
                 margin-left: 40vw;
@@ -92,7 +93,7 @@
         }
 
         &:nth-last-child(1) {
-            border-radius: 0 calc(@border-auto / 2) calc(@border-auto / 2) 0;
+            border-radius: 4px calc(@border-auto / 2) calc(@border-auto / 2) 4px;
         }
     
     }

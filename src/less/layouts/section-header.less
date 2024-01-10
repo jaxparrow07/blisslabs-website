@@ -14,12 +14,17 @@
     }
 
 }
-
 .brand {
+
+    position: relative;
 
     .center-transform;
     .center-flex;
     .vertical-flex;
+
+    width: 80%;
+
+    gap: @gap-very-small;
 
     svg {
 
@@ -29,6 +34,101 @@
         fill: @brand-main;
 
     }
+
+    .slogan-tooltip {
+
+        position: absolute;
+        height: auto;
+        width: auto;
+        z-index: 4;
+        
+        background-color: fade(@brand-main, 50%);
+
+        padding: @padding-small;
+        border-radius: calc(@border-auto / 2);
+
+        bottom: 0%;
+        transform: translateY(120%);
+        scale: 0;
+
+        display: grid;
+        place-items: center;
+
+        transition: scale @transition-sub-step_-mid ease-in-out;
+
+
+        p {
+            font-size: .8em;
+        }
+
+    }
+
+    .slogan-container {
+
+
+        .vertical-flex;
+        .center-cross;
+
+        flex-shrink: 0;
+
+        overflow: hidden;
+
+        height: 32px;
+
+        span {
+            min-height: 32px;
+        }
+
+        &:hover ~ .slogan-tooltip {
+            scale: 1;
+            transition: scale @transition-sub-step_-mid @transition-sub-step_-mid ease-in-out;
+        }
+
+        .slogan-scroller {
+
+            position: relative;
+
+            .vertical-flex;
+            .center-cross;
+
+            flex-shrink: 0;
+            margin-top: 0px;
+
+            animation: scroll 15s ease-in-out infinite;
+            animation-play-state: running;
+
+            @keyframes scroll {
+                0% {
+                    margin-top: 0px;
+                } 10%{
+                    margin-top: 0px;
+                } 20% {
+                    margin-top: -32px;
+                } 30% {
+                    margin-top: -32px;
+                } 40% {
+                    margin-top: -64px;
+                } 60% {
+                    margin-top: -64px;
+                } 70% {
+                    margin-top: -96px;
+                } 90% {
+                    margin-top: -96px;
+                } 100% {
+                    margin-top: 0px;
+                }
+            }
+
+            &:hover {
+                animation-play-state: paused;
+                cursor: help;
+            }
+        }
+
+
+
+    }
+
     
 }    
 
@@ -146,7 +246,7 @@
         padding-left: calc(@link-item-height / 3);
 
         letter-spacing: .5em;
-        font-size: calc(1vh + .3em);
+        font-size: calc(.4vh + .6em);
 
         transition: transform .2s ease-in-out;
 

@@ -1,6 +1,6 @@
 mixin memberCard(imageUrl, name, position)
     .member-card
-        img(src=`${imageUrl}`)
+        img(src=`${imageUrl}`, alt="")
         .vertical-flex.center-main.center-cross.fill-width
             h3 #{name}
             span #{position}
@@ -17,7 +17,7 @@ mixin memberCard(imageUrl, name, position)
     .member-filler-div
 .separator-medium
     
-.contribute
+.contribute#volunteer
     section
         h3.spaced-header.text-center BE PART OF SOMETHING BLISS
         .join-team
