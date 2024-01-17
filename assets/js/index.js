@@ -204,6 +204,7 @@ projectCards.forEach((project, index) => {
     selectProjectCard(index);
   })
 })
+selectProjectCard(0);
 
 
 // Extra Projects
@@ -294,6 +295,5 @@ document.querySelector("#expand-menu").addEventListener("click", () => {
 });
 
 window.addEventListener("load", () => {
-  selectProjectCard(0);
   autoScrollExtraProjects();
 });
