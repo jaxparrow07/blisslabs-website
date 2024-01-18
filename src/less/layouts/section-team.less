@@ -114,30 +114,77 @@
     .vertical-flex;
     .center-cross;
     
-    gap: @gap-default * 2;
-
-    border-radius: @border-auto;
+    gap: @gap-very-small;
     
-    padding: @padding-default;
-    padding-block: @padding-default * 2;
 
-    background-color: fade(#06101B, 70%);
 
-    backdrop-filter: blur(@project-card-blur);
+    @radius_mini: 16px;
+    @radius_max: 48px;
 
-    .breakpoint(small, {
-        width: 100vw;
-        border-radius: 0;
-        backdrop-filter: if((@enable-effects-mobile), blur(@project-card-blur), none);
+    &_outreach {
 
-    });
+        background-image: linear-gradient(to right, black 50%, @brand-main 0%);
+        background-size: 200% 100%;
+        background-position: 100% 0%;
+
+        transition: @transition-sub-step_-mid;
+
+        .description-group {
+            align-items: flex-end;
+        }
+
+        .description-group, .spaced-header {
+            transition: @transition-sub-step_-mid;
+        }
+        &:hover .description-group, &:hover .spaced-header {
+            margin-right: 5% !important;
+            transition: @transition-sub-step_-mid;
+        }
+
+        &:hover {
+            background-position: 0% 0%;
+            transition: @transition-sub-step_-mid;
+        }
+
+        align-items: flex-end !important;
+        padding-right: 10%;
+
+
+    }
 
     section {
+
         .vertical-flex;
         .center-cross;
-        
+
+        padding: @padding-default;
+        padding-block: @padding-default * 2;
+
+        border-radius: @radius_mini;
+        background-color: fade(#06101B, 70%);
+
         gap: @gap-default;
+
+
+
+        &:nth-child(1) {
+            border-radius: @radius_max @radius_max @radius_mini @radius_mini;
+        }
+
+        &:nth-last-child(1) {
+            border-radius: @radius_mini @radius_mini @radius_max @radius_max;
+
+        }
+        .breakpoint(small, {
+
+            width: 100vw;
+            border-radius: 0 !important;
+            //backdrop-filter: if((@enable-effects-mobile), blur(@project-card-blur), none);
+            
+        });
     }
+
+
 
 }
 
