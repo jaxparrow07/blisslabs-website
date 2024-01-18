@@ -8,7 +8,7 @@ mixin projectCard(imageUrl, title, description, highlights, link)
             p #{description}
             p #{highlights}
             a.button(href=`${link}`, target="_blank", aria-label=`${title} homepage`)
-                p Open Homepage
+                span Open Homepage
 
 h2.light-header#highlighted-projects Highlighted Projects
 
@@ -25,3 +25,9 @@ h2.light-header#highlighted-projects Highlighted Projects
     +projectCard("https://avatars.githubusercontent.com/u/16156670?s=400&u=daebf9708e04bd24c53231900690089c7141e2de&v=4",
                 "BlissROMs","A fully featured replacement OS for your Android device based off AOSP, bringing many customizations, features, and optimizations to your device.",
                 "130K+ Yearly Downloads     •     Android 13","https://blissroms.org/")
+
+.highlighted-projects_more-projects
+    .separator-medium
+    a.text-icon-link(href="#extra-projects")
+        | SEE ALL PROJECTS
+        i.bi.bi-arrow-right
