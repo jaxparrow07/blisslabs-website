@@ -12,37 +12,51 @@ mixin extraProjectCard(imageUrl, name, description, github, website)
                 a.link(href=`${website}`, target="_blank", aria-label=`Project ${name}'s homepage`)
                     i.bi.bi-globe
 
-section#mission
-    .mission-holder.head
+section
 
-        section
-            h3.spaced-header.text-center WE ARE A NON-PROFIT
-
-    .mission-holder
-
-        section
-            h1.spaced-header.text-left WHAT WE DO
-            p.text-left Blisslabs is a non profit organization that has a goal to help create and maintain various open source operating systems and other software that helps to extend the life of devices in order to help futher community innovation and help with the world's e-waste problems. 
-
-        section
-
-            h1.spaced-header.text-right HOW WE DO IT
-            p.text-right We work to create projects, mentor and teach future open source developer's in all aspects of development, design, and animation and form alliances with other projects that share in our visions. We also develop tools to help minimize the complex development process and aid in learning. We also act as a global fiscal host for open source projects, allowing for a much larger opportunity to work with others globally and increase user base.
+    section#expenses
+        .mission-holder.mission-holder_head
+            h3.spaced-header.text-center
+                | WE ARE A NON-PROFIT
+                sup  501(c3)
+            p.text-center We're run by people that donate their free time towards the project. We do our best to bring a quality OS to your device, while working a real job on the side in most cases. Please consider showing us we're on the right track by clicking the button below.
+            a.button(href="https://opencollective.com/blisslabs/donate", target="_blank")
+                span Buy us a coffee
         
-        .backdrop-logo
-            include ../partials/inline-logo
+        .mission-holder.mission-holder_transparency
+            h1.spaced-header.text-center TRANSPARENT
+            .mission-holder_transparency_overcard
+                p.text-right We believe in full transparency, but we do not believe this transparency should come at a cost to our supporters. This is why we submit a yearly 990 form to the US IRS. If you are interested in looking into that or any other information we submit, feel free to visit our Guidestar.org page.
+                a.text-icon-link.text-left(href="https://www.guidestar.org/profile/82-3580195", target="_blank")
+                    | Visit Guidestar
+                    i.bi.bi-arrow-right
+
+    section#mission
+        .mission-holder
+            section
+                h1.spaced-header.text-left WHAT WE DO
+                p.text-left Blisslabs is a non profit organization that has a goal to help create and maintain various open source operating systems and other software that helps to extend the life of devices in order to help futher community innovation and help with the world's e-waste problems. 
+
+            section
+
+                h1.spaced-header.text-right HOW WE DO IT
+                p.text-right We work to create projects, mentor and teach future open source developer's in all aspects of development, design, and animation and form alliances with other projects that share in our visions. We also develop tools to help minimize the complex development process and aid in learning. We also act as a global fiscal host for open source projects, allowing for a much larger opportunity to work with others globally and increase user base.
+            
+            .backdrop-logo
+                include ../partials/inline-logo
 
 
-    .bottom-card
+    .bottom-card#extra-projects
         span.color-black BLISS FAMILY
 
         .scroller-layout
             .arrow-container
-                .arrow#extra-project-left
+                .arrow#extra-project-left(tabindex=0)
                     i.bi.bi-arrow-left
                     
-                .arrow#extra-project-right
+                .arrow#extra-project-right(tabindex=0)
                     i.bi.bi-arrow-right
+
             .extra-projects-container#extra-project-container
                 for project in highlightedProjects
                     +extraProjectCard(project.project_avatar, project.project, project.project_description, project.project_github, project.project_website )

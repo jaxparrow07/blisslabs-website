@@ -21,21 +21,6 @@
 @extra-project-card-icons-size: 1.5em;
 
 
-// || MISSION
-section {
-    
-    .head {
-        background: darken(@brand-main, 5%); // FIX: contrast for white text
-        min-height: 0;
-        height: 60px;
-
-        h3 {
-            text-wrap: balance;
-        }
-
-    }
-}
-
 // => FULL WIDTH CONTAINER
 .mission-holder {
 
@@ -58,6 +43,8 @@ section {
     background: black;
 
     overflow: hidden;
+
+
 
     .backdrop-logo {
 
@@ -96,6 +83,82 @@ section {
 
         });
         
+
+    }
+
+}
+
+// || MISSION
+.mission-holder {
+    
+    &_head {
+
+        border-radius: @border-auto @border-auto 0 0;
+
+        background: darken(@brand-main, 5%); // FIX: contrast for white text
+        min-height: 0;
+
+        gap: @gap-small;
+
+        padding-inline: 10%;
+
+        .button {
+            width: 70%;
+        }
+
+        h3 {
+            text-wrap: balance;
+        }
+    }
+
+    &_transparency {
+
+        
+        .horizontal-flex;
+
+        background-image: url("../images/section-bg-1.webp");
+        background-size: cover;
+
+        h1 {
+            color: white;
+        }
+
+        &_overcard {
+
+            .vertical-flex;
+            .center-main;
+
+            gap: @gap-default;
+            padding-inline-end: @padding-default;
+
+            align-items: flex-end;
+
+            position: absolute;
+
+            height: 50%;
+            width: 100%;
+
+            top: 50%;
+            left: 0%;
+            
+            background-color: fade(black, 70%);
+
+            .breakpoint(large, {
+
+                height: 100%;
+                width: 50%;
+                
+                top: unset;
+                left: unset;
+                right: 0%;
+
+            });
+
+            p {
+                width: 80%;
+            }
+            
+        }
 
     }
 
