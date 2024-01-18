@@ -217,7 +217,7 @@ var previousScrollByButton = false;
 
 
 // Keyup for accessibility
-"click keyup".split(" ").forEach(function(e){
+"click keyup".split(" ").forEach((e) => {
 
   showRightArrow.addEventListener(e, () => {
     previousScrollByButton = true;
@@ -282,10 +282,14 @@ function navigationUnhide() {
 // Anchor links done via javascript to detect if it's been done by user
 document.querySelectorAll("header nav a").forEach((elem) => {
 
-  elem.addEventListener("click", () => {
+  "click keyup".split(" ").forEach((e) => {
 
-    navigationUnhide();
-    document.querySelector(elem.dataset.link).scrollIntoView();
+    elem.addEventListener(e, () => {
+
+      navigationUnhide();
+      document.querySelector(elem.dataset.link).scrollIntoView();
+  
+    });
 
   });
 
