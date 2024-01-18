@@ -8,27 +8,49 @@
     height: 40px;
     border-radius: 6px;
 
+    transition: @transition-sub-step_-mid;
+
     cursor: pointer;
 
     &:hover, &:focus {
-        background-color: darken(@button-color, 10%);
+
+        border: 1px solid white;
+
+        background-color: darken(@brand-main, 5%);
+        transition: @transition-sub-step_-mid;
+
+        p, span, i { 
+            color: white;    
+            transition: @transition-sub-step_-mid;
+    
+        }
+
     }
 
     &:active {
-        background-color: darken(@button-color, 20%);
+        background-color: darken(@brand-secondary, 20%);
+
+        transition: @transition-sub-step_-mid;
+
     }
 
     &:focus-visible {
         border: solid 4px @brand-main;
     }
     
-    p { 
+    p, span, i { 
+
         .center-transform;
+
         color: black;
         font-size: 1em;
+
+        transition: @transition-sub-step_-mid;
+
     }
 
     .fill-width;
+
 }
 
 
@@ -89,6 +111,25 @@
     text-decoration: underline;
 }
 
+.text-icon-link {
+
+    .text-link;
+
+    &:hover {
+        i {
+            transition: @transition-sub-step_-quick;
+            margin-right: 1em;
+  
+        }
+    }
+  
+    i {
+        transition: @transition-sub-step_-quick;
+        margin-left: 1em;
+    }
+  
+  }
+
 // => Brand color for texts
 .highlight {
     color: lighten(@brand-main, 5%);
@@ -128,3 +169,4 @@ h3.spaced-header {
     font-weight: 500;
     font-size: calc(.2vw + 1em);
 }
+
