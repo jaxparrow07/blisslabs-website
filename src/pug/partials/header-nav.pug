@@ -2,10 +2,11 @@ header
     nav
         #nav-bar-logo
             include ../partials/inline-logo
-        a.link(href="#highlighted-projects", aria-label="Anchor to Projects") Projects
-        a.link(href="#mission", aria-label="Anchor to Mission") Mission
-        a.link.highlight(href="#volunteer", aria-label="Anchor to Volunteer") Volunteer
-        a.donate(href="https://opencollective.com/blisslabs", target="_blank", aria-label="Donate") Donate
+        a.link(data-link="#highlighted-projects", tabindex=0, aria-label="Anchor to Projects") Projects
+        a.link(data-link="#expenses",  tabindex=0, aria-label="Anchor to Expenses") Expenses
+        a.link(data-link="#mission",  tabindex=0, aria-label="Anchor to Mission") Mission
+        a.link.highlight(data-link="#community", tabindex=0, aria-label="Anchor to Volunteer") Community
+        a.donate(href="https://opencollective.com/blisslabs", tabindex=0, target="_blank", aria-label="Donate") Donate
 
         div#expand-menu.link(aria-label="Toggle Naviation Menu")
             i.bi.bi-list
@@ -13,9 +14,11 @@ header
     .full-screen-nav
         a.link(data-link="#highlighted-projects", aria-label="Navigate to Volunteer")
             h3.spaced-header PROJECTS
+        a.link(data-link="#expenses", aria-label="Navigate to Expenses")
+            h3.spaced-header EXPENSES
         a.link(data-link="#mission", aria-label="Navigate to Mission")
             h3.spaced-header MISSION
-        a.link(data-link="#volunteer", aria-label="Navigate to Volunteer")
-            h3.spaced-header VOLUNTEER
-        a.link.donate(href="https://opencollective.com/blisslabs", target="_blank", data-link="#volunteer", aria-label="Navigate to Volunteer")
+        a.link(data-link="#community", aria-label="Navigate to Volunteer")
+            h3.spaced-header COMMUNITY
+        a.link.donate(href="https://opencollective.com/blisslabs", target="_blank", aria-label="Navigate to Volunteer")
             h3.spaced-header DONATE
