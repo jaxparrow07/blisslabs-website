@@ -4,7 +4,7 @@
 // || ACTIVE STATES - controlled by javascript scroll handling
 .header__active {
     transform: translateY(0%);
-    transition: @transition-curve;
+    transition: @transition-default;
 }
 
 .full-screen-nav__active > .header__active {
@@ -140,7 +140,7 @@ header {
     align-self: flex-start;
 
     transform: translateY(-100%);
-    transition: @item-transition-time_-long cubic-bezier(.98,0,.34,.66);
+    transition: @item-transition-time_-long ease;
 
     background: fade(@brand-secondary, 90%);
 
