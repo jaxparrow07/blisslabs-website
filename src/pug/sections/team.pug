@@ -17,7 +17,7 @@ mixin memberCard(imageUrl, name, position)
     .member-filler-div
 .separator-medium
     
-.contribute#volunteer
+.contribute#community
     section
         h3.spaced-header.text-center BE PART OF SOMETHING BLISS
         .join-team
@@ -25,6 +25,15 @@ mixin memberCard(imageUrl, name, position)
                 p We are accepting people in small manageable groups while we grow, and we tend to lean towards the type of people that want to learn and grow with BlissLabs. We provide the tools, knowledge and the mentorship needed to help bring your development dreams to reality, and all we ask in return is a minimum contribution towards one of our projects while you learn and grow in your strengths.
                 p.highlight * only volunteer positions currently available. Internships coming soon *
             include ../partials/inline-logo
+    
+    section.contribute_outreach
+        h3.spaced-header.text-right OUTREACH
+        .description-group
+            p.text-right Many people across the globe have limited access to development technology, making it hard to learn how to develop Android or Linux based projects. In order to help fill that need, we provide access to team build-servers and we partner with Legacy-Server in order to provide build-server access when resources are available, and help reach the dreams of those that aren't able to access all the needed tools.
+        a.text-icon-link(href="https://legacyserver.in/", target="_blank")
+            | Check build servers
+            i.bi.bi-arrow-right
+
     section
         h3.spaced-header.text-center BRING YOUR PROJECT TO THE CROWD
         .description-group
