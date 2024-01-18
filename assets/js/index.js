@@ -136,7 +136,7 @@ function updateScrollCalculations(state) {
 
 }
 
-
+var isUserScroll = true;
 contentScroll.addEventListener("scroll", (event) => {
 
   updateScrollCalculations("scroll");
@@ -157,19 +157,19 @@ contentScroll.addEventListener("scroll", (event) => {
 
 
   }
+  
+  if (isUserScroll) {
+    if (lastScrollPosition < scrollPosition) {
 
-  if (lastScrollPosition < scrollPosition) {
-
-    document.querySelector("header").classList.add("header__active");
-
-  } else {
-
-    document.querySelector("header").classList.remove("header__active");
-    document.querySelector(".full-screen-nav").classList.remove("full-screen-nav__active");
-
+      document.querySelector("header").classList.add("header__active");
+  
+    } else {
+  
+      document.querySelector("header").classList.remove("header__active");
+      document.querySelector(".full-screen-nav").classList.remove("full-screen-nav__active");
+  
+    }
   }
-
-
 
 });
 
@@ -215,22 +215,26 @@ const extraProjectContainer = document.getElementById('extra-project-container')
 var previousScrollPos = -1;
 var previousScrollByButton = false;
 
-showLeftArrow.addEventListener("click", () => {
-  previousScrollByButton = true;
 
-  extraProjectContainer.scrollBy({
-    top: 0,
-    left: -300,
-    behavior: "smooth",
+// Keyup for accessibility
+"click keyup".split(" ").forEach(function(e){
+
+  showRightArrow.addEventListener(e, () => {
+    previousScrollByButton = true;
+    scrollArrowNext(); 
   });
+
+  showLeftArrow.addEventListener(e, () => {
+    previousScrollByButton = true;
+  
+    extraProjectContainer.scrollBy({
+      top: 0,
+      left: -300,
+      behavior: "smooth",
+    });
+  });
+
 });
-
-showRightArrow.addEventListener("click", () => {
-  previousScrollByButton = true;
-  scrollArrowNext(); 
-});
-
-
 
 function scrollArrowNext() {
   if (previousScrollPos === extraProjectContainer.scrollLeft) {
@@ -267,6 +271,25 @@ function autoScrollExtraProjects() {
   }, EXTRA_PROJECT_SLIDER_INTERVAL);
 }
 
+function navigationUnhide() {
+  isUserScroll = false;
+  setTimeout(() => {
+    isUserScroll = true;
+  }, 1000);
+}
+
+
+// Anchor links done via javascript to detect if it's been done by user
+document.querySelectorAll("header nav a").forEach((elem) => {
+
+  elem.addEventListener("click", () => {
+
+    navigationUnhide();
+    document.querySelector(elem.dataset.link).scrollIntoView();
+
+  });
+
+});
 // => Full screen navigation
 document.querySelector("#expand-menu").addEventListener("click", () => {
 
@@ -278,10 +301,12 @@ document.querySelector("#expand-menu").addEventListener("click", () => {
 
     elem.addEventListener("click", () => {
 
+
       fullScreenNav.classList.remove("full-screen-nav__active");
 
       setTimeout(() => {
 
+        navigationUnhide();
         document.querySelector(elem.dataset.link).scrollIntoView();
 
       }, 500);
