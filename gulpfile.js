@@ -17,11 +17,24 @@ function reload(done) {
 }
 
 const blissApi = "https://api.blissroms.org/api"
-var memberData, projectData;
+var memberData, structMemberData, projectData;
 
 memberData = JSON.parse(request('GET', `${blissApi}/teambliss`).getBody());
 projectData = JSON.parse(request('GET', `${blissApi}/allprojects`).getBody());
 
+
+// HACK until api returns structured data
+structMemberData = {};
+for (member in memberData) {
+
+    if (!structMemberData[memberData[member].department])
+        structMemberData[memberData[member].department] = [];
+
+    structMemberData[memberData[member].department].push({ avatar: memberData[member].avatar, name: memberData[member].member })
+}
+
+
+console.log(structMemberData);
 function styles() {
     return (
         gulp.src('src/less/styles.less')
@@ -58,7 +71,8 @@ function views() {
                 basedir: 'src/pug',
                 data: {
                     highlightedProjects: projectData,
-                    team: memberData
+                    team: memberData,
+                    structTeam: structMemberData
                 }
             }))
             .pipe(gulp.dest('./'))
