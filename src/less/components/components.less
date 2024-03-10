@@ -55,7 +55,7 @@
 
 
 .text-bold {
-    font-weight: 600;
+    font-weight: 600 !important;
 }
 
 .text-center {
@@ -146,6 +146,9 @@
 
 
 // || RESPONSIVE HEADERS
+.spaced-header {
+    text-transform: uppercase;
+}
 h1.spaced-header {
     letter-spacing: .4em;
     line-height: 1.5em;
@@ -170,3 +173,8 @@ h3.spaced-header {
     font-size: calc(.2vw + 1em);
 }
 
+// EXPERIMENTAL
+.parallax-float {
+    --float-index: 1;
+    translate: 0 calc( var(--scroll-factor) * -60px * var(--float-index) ) !important;
+}
