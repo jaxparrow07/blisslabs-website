@@ -1,4 +1,6 @@
 //  || VARIABLES - EASY CUSTOMIZATION
+const CURRENT_PAGE = "index";
+
 const EXTRA_PROJECT_SLIDER_INTERVAL = 4000; // ms
 const NAVIGATION_SCROLL_DELAY = 250; // ms
 
@@ -55,134 +57,6 @@ document.querySelectorAll('.slogan-scroller span').forEach((text) => {
   text.addEventListener('mouseover',() => {
     document.querySelector('.slogan-tooltip p').innerHTML = text.dataset.extra;
   });
-
-});
-
-// || HORIZONTAL SCROLL
-
-var memberCardScroll = document.querySelector(".member-card-grid");
-var memberCardVerticalVoid = document.querySelector(".member-filler-div");
-
-var memberCardStickyHolder = document.querySelector(".sticky-holder");
-
-
-// 
-// => SCROLL CHANGES
-var contentScroll = document.querySelector(".content");
-var spotGradient = document.querySelector(".spot-2");
-var scrollOffsetView = document.querySelector(".scroll-offset-view");
-var footerView = document.querySelector("#footer");
-
-var lastScrollPercentage,
-lastScrollPosition,
-
-relativeScrollStart,
-relativeScollEnd,
-
-scrollPercentage,
-scrollPosition,
-
-scrollRatio;
-
-var contentScrollMax,
-verticalScrollOffset,
-memberCardWidth;
-
-updateScrollCalculations("init");
-
-/*
-
-  Necessary scroll calculations
-
-*/
-function updateScrollCalculations(state) {
-
-  switch(state) {
-    case "init":
-
-      memberCardWidth = memberCardScroll.scrollWidth - memberCardScroll.clientWidth; // Getting the acutal width of it
-
-      // Scroll Ratio avoids the member card from completely disappearing on big screens by adding an offset value
-      if (contentScroll.clientWidth > 1200) {
-        memberCardVerticalVoid.style.height = `${memberCardWidth * 2 }px`;
-        scrollRatio = -400;
-
-      } else {
-        memberCardVerticalVoid.style.height = `${memberCardWidth * 1 }px`;
-        scrollRatio = 0;
-      }
-
-      contentScrollMax = (contentScroll.scrollHeight - contentScroll.clientHeight); // Maximum scroll of the top parent view ( CONTENT )
-      verticalScrollOffset = memberCardStickyHolder.clientHeight; // Height of the sticky view
-
-      relativeScrollStart = ( contentScrollMax - (scrollOffsetView.clientHeight));
-      relativeScollEnd = (contentScrollMax - (verticalScrollOffset));
-
-      break;
-    
-    case "scroll":
-      lastScrollPercentage = scrollPercentage;
-      lastScrollPosition = scrollPosition;
-      
-      scrollPercentage = (contentScroll.scrollTop / contentScrollMax ) * 100;
-      scrollPosition = contentScroll.scrollTop;
-      break;
-    
-    case "resize":
-      updateScrollCalculations("init");
-      break;
-
-  }
-
-}
-
-var isUserScroll = true;
-contentScroll.addEventListener("scroll", (event) => {
-
-  updateScrollCalculations("scroll");
-
-
-  // EXPENSIVE TASK FOR A LIL EFFECT
-  //document.querySelector(":root").style.setProperty("--scroll-percentage", `${scrollPercentage / 2 }%` );
-
-  // Horizontal Scroll Translation
-  // Range Conditions: If scroll position is ABOVE FOOTER and is BELOW MEMBER LIST horizontal view, scroll
-  if ( ( relativeScollEnd > contentScroll.scrollTop) && (contentScroll.scrollTop >  relativeScrollStart) ) {
-
-    // Relative percentage of the horizontally scrollable part
-    const relativeScrollPercentage = (((scrollPosition - relativeScrollStart) / (relativeScollEnd - relativeScrollStart) ) * 100);
-    const scrollByCalc = ( (memberCardWidth + window.innerWidth) * relativeScrollPercentage ) / 100;
-
-    memberCardScroll.style.setProperty("margin-left", `${(scrollByCalc * -1) - scrollRatio}px` );
-
-
-  }
-  
-  if (isUserScroll) {
-    if (lastScrollPosition < scrollPosition) {
-
-      document.querySelector("header").classList.add("header__active");
-  
-    } else {
-  
-      document.querySelector("header").classList.remove("header__active");
-      document.querySelector(".full-screen-nav").classList.remove("full-screen-nav__active");
-  
-    }
-  }
-
-});
-
-// Resizing messes up the horizontal scroll calculations
-window.addEventListener("resize", () => {
-
-  updateScrollCalculations("resize");
-
-  if (( relativeScollEnd > contentScroll.scrollTop) && (contentScroll.scrollTop >  relativeScrollStart)) {
-
-    contentScroll.scrollTo({top: relativeScrollStart, left: 0, behavior: "smooth"});
-
-  }
 
 });
 
@@ -271,57 +145,6 @@ function autoScrollExtraProjects() {
   }, EXTRA_PROJECT_SLIDER_INTERVAL);
 }
 
-function navigationUnhide() {
-  isUserScroll = false;
-  setTimeout(() => {
-    isUserScroll = true;
-  }, 1000);
-}
-
-
-// Anchor links done via javascript to detect if it's been done by user
-document.querySelectorAll("header nav a").forEach((elem) => {
-
-  "click keyup".split(" ").forEach((e) => {
-
-    elem.addEventListener(e, () => {
-
-      navigationUnhide();
-      document.querySelector(elem.dataset.link).scrollIntoView();
-  
-    });
-
-  });
-
-});
-// => Full screen navigation
-document.querySelector("#expand-menu").addEventListener("click", () => {
-
-  var fullScreenNav = document.querySelector(".full-screen-nav");
-
-  fullScreenNav.classList.toggle("full-screen-nav__active");
-  
-  fullScreenNav.querySelectorAll(".link").forEach((elem) => {
-
-    elem.addEventListener("click", () => {
-
-
-      fullScreenNav.classList.remove("full-screen-nav__active");
-
-      setTimeout(() => {
-
-        navigationUnhide();
-        document.querySelector(elem.dataset.link).scrollIntoView();
-
-      }, 500);
-
-    });
-
-  });
-  
-
-
-});
 
 window.addEventListener("load", () => {
   autoScrollExtraProjects();
