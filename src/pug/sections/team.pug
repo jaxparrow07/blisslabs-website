@@ -1,30 +1,6 @@
-mixin memberCard(imageUrl, name, position)
-    .member-card
-        img(src=`${imageUrl}`, alt="")
-        .vertical-flex.center-main.center-cross.fill-width
-            h3 #{name}
-            span #{position}
-
-//- This view is nested because it'll be later used to calculate the horizontal scroll start offset
-#member-scroll-placeholder
-    .sticky-holder
-        h2.spaced-header.text-center BRAINS BEHIND THE BEAUTY
-        .member-card-grid
-            each member in team
-                +memberCard(member.avatar, member.member, member.designation)
-
-
-    .member-filler-div
 .separator-medium
     
 .contribute#community
-    section
-        h3.spaced-header.text-center BE PART OF SOMETHING BLISS
-        .join-team
-            .description-group
-                p We are accepting people in small manageable groups while we grow, and we tend to lean towards the type of people that want to learn and grow with BlissLabs. We provide the tools, knowledge and the mentorship needed to help bring your development dreams to reality, and all we ask in return is a minimum contribution towards one of our projects while you learn and grow in your strengths.
-                p.highlight * only volunteer positions currently available. Internships coming soon *
-            include ../partials/inline-logo
     
     section.contribute_outreach
         h3.spaced-header.text-right OUTREACH
