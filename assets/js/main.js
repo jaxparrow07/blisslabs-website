@@ -14,7 +14,7 @@ contentScroll.addEventListener("scroll", (event) => {
 
     rootCSS.style.setProperty("--scroll-factor", scrollFactor);
 
-    if ( (lastScrollPosition < scrollPosition) ) {
+    if ( (lastScrollPosition > scrollPosition) && (scrollPosition > 1) ) {
 
         document.querySelector("header").classList.add("header__active");
 
@@ -48,7 +48,7 @@ function handleLinkItem(element) {
   } else {
 
     var winlocation = (element.dataset.page === "index") ? "" : `${element.dataset.page}.html`;
-    window.location.href = `/${winlocation}${element.dataset.link}`;
+    window.location.href = `./${winlocation}${element.dataset.link}`;
   }
 
 }
