@@ -45,7 +45,7 @@ jobs:
       - name: Prepare Deployable Files
         run: |
           mkdir deployable
-          cp index.html deployable/
+          cp *.html deployable/
           cp -R assets deployable/
 
       - name: Upload artifact
