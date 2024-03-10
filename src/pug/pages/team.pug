@@ -1,0 +1,60 @@
+extends ../layouts/default-layout.pug
+
+mixin memberCard(image, name)
+  .team__member(data-name=`${name}`, style=`--img-url: url(${image});`)
+
+block content
+  .team__bg
+  .content
+    .team__parallax-card
+
+      .team__title-card
+        video(autoplay muted loop id="liquid-bg")
+          source(src="./assets/images/liquid-bg.webm" type="video/mp4")
+        h2.spaced-header.text-center BE PART OF SOMETHING BLISS
+        .description-group
+          p.text-center  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vehicula eros non risus tristique, blandit auctor risus pharetra. Ut ut est nec risus mattis suscipit. Sed tempor ipsum quis volutpat lobortis. Duis sodales placerat eros et vulputate. Nam velit ligula, sagittis et velit sit amet, imperdiet mattis diam. Maecenas id elit tristique, sodales nulla sed, scelerisque eros. Donec sit amet accumsan nisi. 
+
+      section.team__section
+        .fill-width
+          h1.spaced-header.text-bold.text-left Team Leads
+
+        .team__members-and-hiring
+          .shape-circle.parallax-float
+          .team__member-section
+
+            .shape-circle.parallax-float
+            .shape-circle.parallax-float
+            .shape-circle.parallax-float
+            .shape-circle.parallax-float
+
+            each department, index in structTeam
+              h3 #{index}
+              section
+                for member in department
+                  +memberCard(member.avatar, member.name)
+
+          .team__hiring-section
+            h2.spaced-header volunteer
+            .description-group
+              p.text-left We are accepting people in small manageable groups while we grow, and we tend to lean towards the type of people that want to learn and grow with BlissLabs. We provide the tools, knowledge and the mentorship needed to help bring your development dreams to reality, and all we ask in return is a minimum contribution towards one of our projects while you learn and grow in your strengths.
+              p.highlight.text-left * only volunteer positions currently available. Internships coming soon *
+            
+            hr
+            section
+              h3.spaced-header.text-center Postions
+              .button
+                span Developer
+              .button
+                span Designer
+
+      section.team__contributors
+        h3.text-center Meet our contributors
+
+
+
+          
+    //- Due to extra stuff happening in the page
+    include ../partials/footer.pug
+    
+  script(src="./assets/js/team.js")

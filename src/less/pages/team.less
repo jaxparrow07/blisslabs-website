@@ -1,0 +1,265 @@
+:root {
+    --scroll-factor: 0;
+}
+
+.team__parallax-card {
+    
+    .parallax-card;
+    padding-block: 0;
+    gap: @gap-very-small;
+}
+
+.team__title-card {
+
+    .vertical-flex;
+    .center-flex;
+
+    gap: @gap-small;
+
+    width: 100vw;
+    min-height: 700px;
+    padding: @padding-default;
+
+    background-color: white;
+    background-attachment: fixed;
+    background-size: cover;
+
+    border-radius: 0 0 @border-auto @border-auto;
+
+    position: relative;
+    overflow: hidden;
+
+    background-clip: content-box; // anti-aliasing for rounded corners
+
+    .breakpoint(small,{
+
+        width: 100vw;
+        border-radius: 0;
+    
+    });
+    
+    &:hover {
+        video {
+            filter: brightness(30%) hue-rotate(45deg) ;
+        }
+    }
+
+    video {
+        position: absolute;
+        min-width: 120%;
+        
+        transition: .5s;
+        filter: brightness(50%) hue-rotate(-20deg);
+
+    }
+
+    *:not(video) {
+        z-index: 2;
+    }
+
+}
+
+.team__bg {
+    position: absolute;
+    height: 100vh;
+    width: 100vw;
+
+    //background-image: url(https://images.pexels.com/photos/998641/pexels-photo-998641.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1);
+    background-color: black;
+    //background-image: url(https://images.pexels.com/photos/176851/pexels-photo-176851.jpeg);
+    background-size: cover;
+}
+
+
+
+// MEMBERS AND HIRING
+.team__section {
+
+    .center-flex;
+    .vertical-flex;
+    gap: @gap-default;
+
+    width: 100vw;
+
+    padding: @padding-default;
+
+}
+
+// => Parent holder
+.team__members-and-hiring {
+    
+    .horizontal-flex;
+
+    gap: @gap-default;
+
+    width: 100%;
+    position: relative;
+
+    & > * {
+        padding: @padding-default;
+    }
+
+    .breakpoint(medium, {
+        .vertical-flex;
+    });
+
+    & > .shape-circle {
+
+        position: absolute;
+        height: 150px;
+        aspect-ratio: 1;
+
+        background-color: @brand-main;
+        border-radius: 50%;
+
+        top: 5%;
+        right: 5%;
+
+        transform: translate(50%, -50%);
+
+        --float-index: 2 !important;
+
+    }
+}
+
+.team__hiring-section {
+
+    .vertical-flex;
+    gap: @gap-default;
+
+    flex-basis: 50%;
+    min-height: 100%;
+
+    border: 2px solid @brand-main;
+    border-radius: @border-default @border-default @border-small @border-default;
+    backdrop-filter: blur(8px);
+
+    .description-group {
+        .fill-width;
+    }
+
+    section {
+        .vertical-flex;
+        gap: @gap-small;
+    }
+    
+}
+
+@team__member-icon-height: 6rem;
+.team__member-section {
+
+    .center-flex;
+    .vertical-flex;
+    gap: @gap-small;
+    flex-basis: 50%;
+
+    background-color: fade(white, 10%);
+    border-radius: @border-default @border-default @border-default @border-small;
+
+    position: relative;
+    backdrop-filter: blur(8px);
+
+    h3 {
+        transform: translateY(30%)
+    }
+
+    section {
+    
+        .horizontal-flex;
+        .center-flex;
+
+        flex-grow: 0;
+        min-height: @team__member-icon-height;
+            
+        .team__member {
+          
+          margin-right: -10px; 
+          
+          height: @team__member-icon-height;
+          aspect-ratio: 1;
+                
+          background: var(--img-url) center center;
+          background-size: cover;
+          border-radius: 50%;
+          border: 3px @brand-main solid;
+          
+          transition: .5s;
+          
+          &:hover {
+            margin-top: -2rem;
+            box-shadow: 0px 10px 10px fade(@brand-main, 50%);
+            border-radius: calc(50% - 8px);
+            
+          }
+          
+        }
+        
+    }
+
+    .shape-circle {
+
+        position: absolute;
+        height: 50px;
+        aspect-ratio: 1;
+
+        background-color: @brand-main;
+        border-radius: 50%;
+
+        top: 50%;
+        left: 10%;
+
+        animation: float 5s infinite;
+
+        --float-index: 1.5 !important;
+
+        @keyframes float {
+            50% {
+                transform: translateY(50%);
+            }
+        }
+
+        &:nth-child(2) {
+            left: 30%;
+            top: 10%;
+            height: 20px;
+
+            --float-index: 5 !important;
+        }
+        &:nth-child(3) {
+            left: 90%;
+            top: 90%;
+            height: 70px;
+
+            --float-index: 2 !important;
+
+        }
+        &:nth-child(4) {
+            left: 90%;
+            top: 0%;
+            height: 50px;
+
+            --float-index: 1 !important;
+        }
+    }
+
+}
+
+.team__contributors {
+
+    width: 100vw;
+    min-height: 400px;
+
+    //border: 1px solid white;
+
+    border-radius: @border-small @border-small 0 0;
+
+    .vertical-flex;
+
+    padding: @padding-default;
+
+    h3 {
+        text-transform: uppercase;
+    }
+
+
+}
